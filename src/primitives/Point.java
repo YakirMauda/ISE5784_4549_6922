@@ -2,7 +2,17 @@ package primitives;
 
 public class Point {
 
-    final Double3 xyz;
+    final protected Double3 xyz;
+    public final static Point ZERO = new Point(Double3.ZERO);
+
+
+    public Point(double x, double y, double z) {
+        xyz = new Double3(x, y, z);
+    }
+
+    public Point(Double3 xyz) {
+        this(xyz.d1, xyz.d2, xyz.d3);
+    }
 
     @Override
     public boolean equals(Object object) {
@@ -17,7 +27,7 @@ public class Point {
     }
 
     public Point add(Vector vector) {
-        return new Point(xyz.add(vector));
+        return new Point(xyz.add(vector.xyz));
     }
 
     public Vector subtract(Point point) {
@@ -30,5 +40,11 @@ public class Point {
 
 
     public double distanceSquared(Point point) {
-        return xyz.subtract(point.xyz).lengthSquared();
+        double dx = xyz.d1 - point.xyz.d1;
+        double dy = xyz.d2 - point.xyz.d2;
+        double dz = xyz.d3 - point.xyz.d3;
+        return dx * dx + dy * dy + dz * dz;
+    }
+
+
     }

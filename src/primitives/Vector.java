@@ -2,12 +2,21 @@ package primitives;
 
 public class Vector extends Point{
 
+    public Vector(double x, double y, double z) {
+        super(x, y, z);
+
+        if(new Double3(x,y,z).equals(Double3.ZERO))
+            throw new IllegalArgumentException("Vector cannot be (0,0,0)");
+
+    }
+
+    public Vector(Double3 xyz) {
+        this(xyz.d1, xyz.d2, xyz.d3);
+    }
+
     @Override
     public boolean equals(Object object) {
-        super.equals(object);
-        if (this == object) return true;
-        return (object instanceof Vector other)
-                && xyz.equals(other.xyz);
+        return super.equals(object);
     }
 
     @Override
