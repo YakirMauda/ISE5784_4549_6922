@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="My first commit :)">
+    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="start of Geometries">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +15,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -30,12 +29,12 @@
     &quot;assignee&quot;: &quot;YakirMauda&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/YakirMauda/ISE5784_4549_6922.git&quot;,
-    &quot;accountId&quot;: &quot;c7776d2c-a786-4215-8120-929defb78310&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/YakirMauda/ISE5784_4549_6922.git",
+    "accountId": "22ba335a-2d8e-4974-889f-4c036bc33cec"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -72,14 +71,6 @@
       <recent name="C:\Users\user\IdeaProjects\ISE5784_4549_6922\src\primitives" />
     </key>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -100,7 +91,23 @@
       <option name="project" value="LOCAL‎" />
       <updated>1715001420909</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finish primitives">
+      <option name="closed" value="true" />
+      <created>1715090025917</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715090025917</updated>
+    </task>
+    <task id="LOCAL-00003" summary="start of Geometries">
+      <option name="closed" value="true" />
+      <created>1715091505472</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715091505472</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +126,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="My first commit :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="My first commit :)" />
+    <MESSAGE value="finish primitives" />
+    <MESSAGE value="start of Geometries" />
+    <option name="LAST_COMMIT_MESSAGE" value="start of Geometries" />
   </component>
 </project>
