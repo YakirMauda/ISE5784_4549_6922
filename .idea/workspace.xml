@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="My first commit :)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
     </list>
@@ -25,18 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "YakirMauda"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;YakirMauda&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/YakirMauda/ISE5784_4549_6922.git",
-    "accountId": "c7776d2c-a786-4215-8120-929defb78310"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/YakirMauda/ISE5784_4549_6922.git&quot;,
+    &quot;accountId&quot;: &quot;c7776d2c-a786-4215-8120-929defb78310&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -103,6 +105,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="My first commit :)" />

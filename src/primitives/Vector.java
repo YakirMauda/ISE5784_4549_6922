@@ -25,7 +25,7 @@ public class Vector extends Point{
     }
 
     public double lengthSquared() {
-        return xyz.lengthSquared();
+        return this.dotProduct(this);
     }
 
     public double length() {
@@ -41,15 +41,17 @@ public class Vector extends Point{
         return new Vector(xyz.scale(scalar));
     }
 
-    public Vector dotProduct(Vector vector) {
-        return new Vector(xyz.dotProduct(vector.xyz));
+    public double dotProduct(Vector vector) {
+        return this.xyz.d1 * vector.xyz.d1
+                + this.xyz.d2 * vector.xyz.d2
+                + this.xyz.d3 * vector.xyz.d3;
     }
 
     public Vector crossProduct(Vector vector) {
-        return new Vector(xyz.crossProduct(vector.xyz));
+        return new Vector((xyz.d2 * vector.xyz.d3) - (xyz.d3 * vector.xyz.d2),
+                (xyz.d3 * vector.xyz.d1) - (xyz.d1 * vector.xyz.d3),
+                (xyz.d1 * vector.xyz.d2) - (xyz.d2 * vector.xyz.d1));
     }
 
-    public Vector normalize() {
-        return new Vector(xyz.normalize());
-    }
+    public Vector normalize() { return scale(1/length()); }
 }
