@@ -5,8 +5,6 @@ package primitives;
  * A ray is defined by a starting point and a direction vector.
  * This class encapsulates the starting point and direction of a ray.
  * Instances of this class are immutable.
- *
- * @author Yakir Mauda & Benaya Trabelsi
  */
 public class Ray {
 

@@ -4,8 +4,6 @@ package primitives;
  * Represents a point in three-dimensional space.
  * This class encapsulates the coordinates of a point and provides methods for manipulating points.
  * Instances of this class are immutable.
- *
- * @author Yakir Mauda & Benaya Trabelsi
  */
 public class Point {
 

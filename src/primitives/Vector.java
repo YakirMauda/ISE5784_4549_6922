@@ -5,8 +5,6 @@ package primitives;
  * A vector is a directed line segment that has both magnitude and direction.
  * This class encapsulates the coordinates of a vector and provides methods for vector operations.
  * Instances of this class are immutable.
- *
- * @author Yakir Mauda & Benaya Trabelsi
  */
 public class Vector extends Point {
 

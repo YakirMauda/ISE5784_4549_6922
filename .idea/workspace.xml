@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="finish without: JavaDoc, &quot;==&quot; etc, what's Plane's getNormal need to return.">
+    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="fix constructor and JAVADOC of primitives package">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
@@ -98,7 +96,8 @@
       <workItem from="1715000585205" duration="9172000" />
       <workItem from="1715197806908" duration="2304000" />
       <workItem from="1715266423457" duration="1671000" />
-      <workItem from="1715332016042" duration="1805000" />
+      <workItem from="1715332016042" duration="1959000" />
+      <workItem from="1715340810818" duration="337000" />
     </task>
     <task id="LOCAL‎-00001" summary="My first commit :)">
       <option name="closed" value="true" />
@@ -124,7 +123,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1715094149452</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL‎-00004" summary="fix constructor and JAVADOC of primitives package">
+      <option name="closed" value="true" />
+      <created>1715333975290</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL‎-00004" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1715333975290</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +152,7 @@
     <MESSAGE value="My first commit :)" />
     <MESSAGE value="finish primitives" />
     <MESSAGE value="finish without: JavaDoc, &quot;==&quot; etc, what's Plane's getNormal need to return." />
-    <option name="LAST_COMMIT_MESSAGE" value="finish without: JavaDoc, &quot;==&quot; etc, what's Plane's getNormal need to return." />
+    <MESSAGE value="fix constructor and JAVADOC of primitives package" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix constructor and JAVADOC of primitives package" />
   </component>
 </project>
