@@ -4,14 +4,26 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-public class Tube extends RadialGeometry{
+/**
+ * Represents a tube in a three-dimensional (3D) space.
+ * A tube is defined by its radius and an axis - a Ray.
+ */
+public class Tube extends RadialGeometry {
 
+    /** The axis of the tube. */
     final protected Ray axis;
 
-    public Tube(double radius, Ray a) {
+    /**
+     * Constructs a new Tube with the specified radius and axis.
+     *
+     * @param radius The radius of the tube.
+     * @param axis   The axis of the tube.
+     */
+    public Tube(double radius, Ray axis) {
         super(radius);
-        axis = a;
+        this.axis = axis;
     }
+
 
     @Override
     public Vector getNormal(Point point) {
