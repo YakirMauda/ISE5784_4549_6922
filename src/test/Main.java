@@ -7,9 +7,12 @@ import primitives.Vector;
 import static java.lang.System.out;
 
 import static primitives.Util.isZero;
-
 /**
  * Test program for the 1st stage
+ *
+ *  Yakir Mauda 322434549 ymauda@g.jct.ac.il
+ *  Benaya Trabelsi 325836922 benayatrabelsi@gmail.com
+ *
  * @author Dan Zilberstein
  */
 public final class Main {
