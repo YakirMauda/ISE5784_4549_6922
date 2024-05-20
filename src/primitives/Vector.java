@@ -1,5 +1,7 @@
 package primitives;
 
+import static primitives.Util.isZero;
+
 /**
  * Represents a vector in three-dimensional (3D) space.
  * A vector is a directed line segment that has both magnitude and direction.
@@ -75,10 +77,16 @@ public class Vector extends Point {
     /**
      * Scales the vector by a scalar value.
      *
-     * @param scalar The scalar value by which to scale the vector.
-     * @return The scaled vector.
+     * This method multiplies each component of the vector by the given scalar value
+     * and returns a new vector with the scaled components.
+     *
+     * @param scalar The scalar value by which to scale the vector. Must not be zero.
+     * @return A new {@code Vector} instance with each component scaled by the given scalar value.
+     * @throws IllegalArgumentException if the scalar value is zero.
      */
     public Vector scale(double scalar) {
+        if(isZero(scalar))
+            throw new IllegalArgumentException("Cannot scale by 0");
         return new Vector(xyz.scale(scalar));
     }
 
@@ -101,6 +109,10 @@ public class Vector extends Point {
      * @return The cross product of the two vectors.
      */
     public Vector crossProduct(Vector vector) {
+        //check if the vectors are parallel
+        if (this.equals(vector) || this.equals(vector.scale(-1)))
+            throw new IllegalArgumentException("Cross product of parallel vectors is undefined");
+
         return new Vector((xyz.d2 * vector.xyz.d3) - (xyz.d3 * vector.xyz.d2),
                 (xyz.d3 * vector.xyz.d1) - (xyz.d1 * vector.xyz.d3),
                 (xyz.d1 * vector.xyz.d2) - (xyz.d2 * vector.xyz.d1));

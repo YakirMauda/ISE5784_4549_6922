@@ -9,7 +9,6 @@ import primitives.Vector;
 public class Plane implements Geometry {
 
     private final Point q;
-
     private final Vector normal;
 
     /**
@@ -20,8 +19,10 @@ public class Plane implements Geometry {
      * @param c The third point.
      */
     public Plane(Point a, Point b, Point c) {
-        normal = null;
         q = a;
+        Vector v1 = b.subtract(a);
+        Vector v2 = c.subtract(a);
+        normal = v1.crossProduct(v2).normalize();
     }
 
     /**
@@ -41,11 +42,9 @@ public class Plane implements Geometry {
      * @return The normal vector of the plane.
      */
     public Vector getNormal() {
-        return normal;
-    }
+        return normal;}
 
     @Override
     public Vector getNormal(Point point) {
-        return normal;
-    }
+        return normal; }
 }

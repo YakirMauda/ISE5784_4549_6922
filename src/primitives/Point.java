@@ -42,10 +42,16 @@ public class Point {
     }
 
 
-    @Override
+    /**
+     * Returns a string representation of the object.
+     * This method returns the string representation of the `xyz` field.
+     *
+     * @return the string representation of the `xyz` field.
+     */
     public String toString() {
         return xyz.toString();
     }
+
 
     /**
      * Adds a vector to the point.
