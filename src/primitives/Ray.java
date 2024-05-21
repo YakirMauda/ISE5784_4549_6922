@@ -39,4 +39,20 @@ public class Ray {
     public String toString() {
         return "head: " + head + ", direction: " + direction;
     }
-}
+
+    public Point getHead() {
+        return head;
+    }
+
+    public Vector getDirection() {
+        return direction;
+    }
+
+    public Point getPoint(double t) {
+        try {
+            return head.add(direction.scale(t));
+        } catch (IllegalArgumentException ignore) {
+            return head;
+        }
+    }}
+

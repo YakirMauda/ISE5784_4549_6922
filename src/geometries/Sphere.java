@@ -16,13 +16,13 @@ public class Sphere extends RadialGeometry {
      * @param radius The radius of the sphere.
      * @param point The center point of the sphere.
      */
-    public Sphere(double radius, Point point) {
+    public Sphere(Point point, double radius) {
         super(radius);
         center = point;
     }
 
     @Override
     public Vector getNormal(Point point) {
-        return null;
+        return point.subtract(center).normalize();
     }
 }

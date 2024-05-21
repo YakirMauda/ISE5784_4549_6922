@@ -6,42 +6,44 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for the {@link Plane} class.
+ */
 class PlaneTests {
 
+    /** Delta value for accuracy when comparing the numbers of type 'double' in
+     * assertEquals */
+    private final double DELTA = 0.000001;
+
+    /**
+     * Test method for {@link geometries.Plane#Plane(Point, Point, Point)}.
+     * Tests the constructor of the Plane class.
+     */
     @Test
-    void getNormal() {
+    public void testConstructor() {
+        // =============== Boundary Values Tests ==================
+        // TC01: Creating a plane with 2 points that are the same
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Plane(new Point(0, 0, 0), new Point(0, 0, 0), new Point(0, 1, 0));
+        }, "Constructed a plane with 2 points that are the same");
+
+        // TC02: Creating a plane with 3 points that are on the same line
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Plane(new Point(0, 0, 0), new Point(1, 0, 0), new Point(2, 0, 0));
+        }, "Constructed a plane with 3 points that are on the same line");
     }
 
+    /**
+     * Test method for {@link geometries.Plane#getNormal(Point)}.
+     * Tests the getNormal method of the Plane class.
+     */
     @Test
     void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
-        //
-
-
-
-
-
-
-
-        /**
-        // TC01: There is a simple single test here - using a quad
-        Point[] pts =
-                {       new Point(0, 0, 1),
-                        new Point(1, 0, 0),
-                        new Point(0, 1, 0),
-                        new Point(-1, 1, 1)};
-        Polygon pol = new Polygon(pts);
-        // ensure there are no exceptions
-        assertDoesNotThrow(() -> pol.getNormal(new Point(0, 0, 1)), "");
-        // generate the test result
-        Vector result = pol.getNormal(new Point(0, 0, 1));
-        // ensure |result| = 1
-        assertEquals(1, result.length(), DELTA, "Polygon's normal is not a unit vector");
-        // ensure the result is orthogonal to all the edges
-        for (int i = 0; i < 3; ++i)
-            assertEquals(0d, result.dotProduct(pts[i].subtract(pts[i == 0 ? 3 : i - 1])), DELTA,
-                    "Polygon's normal is not orthogonal to one of the edges");
-    }
-         */
+        // TC01: There is a simple single test here
+        Vector n = new Plane(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0)).getNormal(null);
+        assertEquals(1, n.length(), DELTA, "Bad normal length");
+        assertEquals(0, new Point(0, 0, 1).subtract(new Point(0, 1, 0)).dotProduct(n), DELTA, "Normal isn't orthogonal to plane");
+        assertEquals(0, new Point(0, 0, 1).subtract(new Point(1, 0, 0)).dotProduct(n), DELTA, "Normal isn't orthogonal to plane");
     }
 }

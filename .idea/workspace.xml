@@ -4,22 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="Adding the details of the partners in the main file">
-      <change afterPath="$PROJECT_DIR$/unittests/geometries/CylinderTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/geometries/PolygonTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/geometries/RadialGeometryTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/primitives/PointTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/primitives/RayTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/primitives/UtilTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/primitives/VectorTests.java" afterDir="false" />
+    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="start testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/CylinderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/CylinderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/primitives/PointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/PointTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/primitives/RayTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/RayTests.java" afterDir="false" />
+    </list>
+    <list id="4cd0d067-7d5b-485a-9ef4-2364b611b165" name="Changes by User" comment="">
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/primitives/PointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/PointTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/primitives/VectorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/VectorTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +58,30 @@
     &quot;accountId&quot;: &quot;c7776d2c-a786-4215-8120-929defb78310&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/unittests/primitives/PointTests.java">
+      <ranges>
+        <range start1="6" end1="6" start2="6" end2="9" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="7" end1="8" start2="10" end2="10" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="9" end1="9" start2="11" end2="17" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="11" end1="15" start2="19" end2="21" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="18" end1="19" start2="24" end2="25" changelist="4cd0d067-7d5b-485a-9ef4-2364b611b165" />
+        <range start1="20" end1="21" start2="26" end2="28" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="22" end1="23" start2="29" end2="31" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="24" end1="25" start2="32" end2="34" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="26" end1="27" start2="35" end2="37" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="28" end1="29" start2="38" end2="40" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="32" end1="32" start2="43" end2="46" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="36" end1="37" start2="50" end2="51" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="41" end1="41" start2="55" end2="56" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="45" end1="46" start2="60" end2="63" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="51" end1="51" start2="68" end2="69" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="52" end1="53" start2="70" end2="71" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="59" end1="59" start2="77" end2="80" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+        <range start1="70" end1="70" start2="91" end2="94" changelist="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -74,6 +100,8 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.All in ISE5784_4549_6922.executor": "Run",
+    "JUnit.CylinderTests.executor": "Run",
     "JUnit.PointTest.add.executor": "Run",
     "JUnit.PointTest.distance.executor": "Run",
     "JUnit.PointTest.distanceSquared.executor": "Run",
@@ -82,8 +110,10 @@
     "JUnit.PointTest.testEquals.executor": "Run",
     "JUnit.PointTests.executor": "Run",
     "JUnit.PointTests.testEquals.executor": "Run",
+    "JUnit.PolygonTests.executor": "Run",
     "JUnit.PolygonTests.testConstructor.executor": "Run",
     "JUnit.RayTest.testEquals.executor": "Run",
+    "JUnit.TubeTests.executor": "Run",
     "JUnit.VectorTests.add.executor": "Run",
     "JUnit.VectorTests.executor": "Run",
     "JUnit.VectorTests.testEquals.executor": "Run",
@@ -94,6 +124,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -125,40 +156,31 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VectorTests">
-    <configuration name="PointTest.add" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PolygonTests">
+    <configuration name="All in ISE5784_4549_6922" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="primitives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.PointTest" />
-      <option name="METHOD_NAME" value="add" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PointTest.subtract" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CylinderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="primitives.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.PointTest" />
-      <option name="METHOD_NAME" value="subtract" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.CylinderTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RayTest.testEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PointTests.testEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
         <pattern>
@@ -167,9 +189,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.RayTest" />
+      <option name="MAIN_CLASS_NAME" value="primitives.PointTests" />
       <option name="METHOD_NAME" value="testEquals" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PolygonTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_4549_6922" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.PolygonTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -189,29 +226,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VectorTests.add" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_4549_6922" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="primitives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.VectorTests" />
-      <option name="METHOD_NAME" value="add" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PointTests.testEquals" />
+        <item itemvalue="JUnit.All in ISE5784_4549_6922" />
+        <item itemvalue="JUnit.CylinderTests" />
         <item itemvalue="JUnit.VectorTests" />
-        <item itemvalue="JUnit.RayTest.testEquals" />
-        <item itemvalue="JUnit.PointTest.add" />
-        <item itemvalue="JUnit.PointTest.subtract" />
-        <item itemvalue="JUnit.VectorTests.add" />
+        <item itemvalue="JUnit.PolygonTests" />
       </list>
     </recent_temporary>
   </component>
@@ -243,6 +264,10 @@
       <workItem from="1715848233891" duration="11820000" />
       <workItem from="1716057288279" duration="8277000" />
       <workItem from="1716116951495" duration="9594000" />
+      <workItem from="1716214182874" duration="69000" />
+      <workItem from="1716231241822" duration="1798000" />
+      <workItem from="1716292316354" duration="9911000" />
+      <workItem from="1716316812303" duration="6069000" />
     </task>
     <task id="LOCAL‎-00001" summary="My first commit :)">
       <option name="closed" value="true" />
@@ -292,7 +317,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1715499994356</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎-00007" summary="start testing">
+      <option name="closed" value="true" />
+      <created>1716214237239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL‎-00007" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1716214237239</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +362,8 @@
     <MESSAGE value="Add Javadoc to the Geometries" />
     <MESSAGE value="Added an exception throw in the 2nd constructor of the Vector class" />
     <MESSAGE value="Adding the details of the partners in the main file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding the details of the partners in the main file" />
+    <MESSAGE value="start testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="start testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -338,15 +372,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/unittests/geometries/PlaneTests.java</url>
-          <line>11</line>
-          <properties class="geometries.PlaneTests" method="getNormal">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
