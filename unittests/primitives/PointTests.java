@@ -22,7 +22,7 @@ class PointTests {
         assertNotEquals(p1, new Point(0, 0, 0), "Different points are equal");
 
         // ============ Equivalence Partitions Tests ==============
-        // TC03: null
+        // TC02: null
         assertNotEquals(p1, null, "The point is equal to null");
 
         // TC03: Different type

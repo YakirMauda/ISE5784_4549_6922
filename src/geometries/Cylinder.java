@@ -25,6 +25,31 @@ public class Cylinder extends Tube {
 
     @Override
     public Vector getNormal(Point point) {
+        // Check if the point is exactly at the start of the axis (the base point)
+        if (point.equals(axis.getPoint(0))) {
+            // If so, return the direction of the axis as the normal vector
+            return axis.getDirection().scale(1);
+        }
+
+        // Check if the point lies on the plane that includes the base point and is perpendicular to the axis
+        if (point.subtract(axis.getPoint(0)).dotProduct(axis.getDirection()) == 0) {
+            // If so, return the direction of the axis as the normal vector
+            return axis.getDirection().scale(1);
+        }
+
+        // Check if the point is exactly at the end of the axis (the top point)
+        if (point.equals(axis.getPoint(height))) {
+            // If so, return the direction of the axis as the normal vector
+            return axis.getDirection().scale(1);
+        }
+
+        // Check if the point lies on the plane that includes the top point and is perpendicular to the axis
+        if (point.subtract(axis.getPoint(height)).dotProduct(axis.getDirection()) == 0) {
+            // If so, return the direction of the axis as the normal vector
+            return axis.getDirection().scale(1);
+        }
+
+        // For all other points, use the superclass method to calculate the normal
         return super.getNormal(point);
     }
 }
