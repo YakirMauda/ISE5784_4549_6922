@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="start testing">
-      <change afterPath="$PROJECT_DIR$/lib/apiguardian-api-1.1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-api-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-params-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-platform-commons-1.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-platform-engine-1.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/opentest4j-1.2.0.jar" afterDir="false" />
+    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="stage 2 updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISE5784_4549_6922.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ISE5784_4549_6922.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/CylinderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/CylinderTests.java" afterDir="false" />
     </list>
     <list id="4cd0d067-7d5b-485a-9ef4-2364b611b165" name="Changes by User" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +64,7 @@
     "Downloaded.Files.Path.Enabled": "true",
     "JUnit.All in ISE5784_4549_6922.executor": "Run",
     "JUnit.CylinderTests.executor": "Run",
+    "JUnit.CylinderTests.testGetNormal.executor": "Run",
     "JUnit.PointTest.add.executor": "Run",
     "JUnit.PointTest.distance.executor": "Run",
     "JUnit.PointTest.distanceSquared.executor": "Run",
@@ -128,7 +119,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ISE5784_4549_6922">
+  <component name="RunManager" selected="JUnit.CylinderTests.testGetNormal">
     <configuration name="All in ISE5784_4549_6922" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <option name="PACKAGE_NAME" value="" />
@@ -152,6 +143,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CylinderTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_4549_6922" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.CylinderTests" />
+      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PointTests.testEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
@@ -164,21 +171,6 @@
       <option name="MAIN_CLASS_NAME" value="primitives.PointTests" />
       <option name="METHOD_NAME" value="testEquals" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PolygonTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_4549_6922" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.PolygonTests" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -200,11 +192,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CylinderTests.testGetNormal" />
         <item itemvalue="JUnit.All in ISE5784_4549_6922" />
         <item itemvalue="JUnit.PointTests.testEquals" />
         <item itemvalue="JUnit.CylinderTests" />
         <item itemvalue="JUnit.VectorTests" />
-        <item itemvalue="JUnit.PolygonTests" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +281,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1716214237239</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL‎-00008" summary="stage 2 updated">
+      <option name="closed" value="true" />
+      <created>1716727138779</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL‎-00008" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1716727138779</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +328,8 @@
     <MESSAGE value="Added an exception throw in the 2nd constructor of the Vector class" />
     <MESSAGE value="Adding the details of the partners in the main file" />
     <MESSAGE value="start testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="start testing" />
+    <MESSAGE value="stage 2 updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="stage 2 updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

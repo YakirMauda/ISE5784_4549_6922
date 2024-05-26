@@ -19,7 +19,7 @@ class SphereTests {
     void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here
-        Sphere sph = new Sphere(new Point(0, 0, 1), 1d);
-        assertEquals(new Vector(0, 0, 1), sph.getNormal(new Point(0, 0, 2)), "Bad normal to sphere");
+        Sphere sphere = new Sphere(new Point(0, 0, 1), 1d);
+        assertEquals(new Vector(0, 0, 1), sphere.getNormal(new Point(0, 0, 2)), "Bad normal to sphere");
     }
 }
