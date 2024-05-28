@@ -3,6 +3,8 @@ package geometries;
 import org.junit.jupiter.api.Test;
 import primitives.Point;
 import primitives.Vector;
+import primitives.Ray;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,5 +47,15 @@ class PlaneTests {
         assertEquals(1, n.length(), DELTA, "Bad normal length");
         assertEquals(0, new Point(0, 0, 1).subtract(new Point(0, 1, 0)).dotProduct(n), DELTA, "Normal isn't orthogonal to plane");
         assertEquals(0, new Point(0, 0, 1).subtract(new Point(1, 0, 0)).dotProduct(n), DELTA, "Normal isn't orthogonal to plane");
+    }
+
+
+    /**
+     * Test method for {@link geometries.Plane#findIntersections(Ray)}.
+     * Tests the findIntersections method of the Plane class.
+     */
+    @Test
+    void findIntersections(){
+
     }
 }

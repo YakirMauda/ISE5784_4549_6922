@@ -36,4 +36,12 @@ class TubeTests {
         assertEquals(v100, t.getNormal(new Point(1, 0, 1)),
                 "Bad normal to tube - point on tube's surface in line with the axis start point");
     }
+
+
+    /**
+     * Test method for {@link geometries.Plane#findIntersections(Ray)}.
+     * Tests the findIntersections method of the Plane class.
+     */
+    @Test
+    void findIntersections(){}
 }

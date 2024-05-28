@@ -6,7 +6,7 @@ import primitives.Vector;
 /**
  * Represents a geometric shape in three-dimensional space.
  */
-public interface Geometry {
+public interface Geometry extends Intersectable{
 
     /**
      * Computes the normal vector to the geometry at a given point.

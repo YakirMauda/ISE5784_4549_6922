@@ -16,10 +16,10 @@ class CylinderTests {
 
     /**
      * Test method for {@link geometries.Cylinder#getNormal(Point)}.
+     * Tests the getNormal method of the Cylinder class.
      */
-
     @Test
-    void testGetNormal() {                                          //לתקןןן
+    void testGetNormal() {
         // =============== Boundary Values Tests ==================
         // TC01: Point at the center of 1st base
         assertEquals(v010, cyl.getNormal(new Point(0, 0, 1)), "Bad normal to center of lower base");
@@ -38,5 +38,14 @@ class CylinderTests {
         // TC07: Point at a 2nd base of the cylinder
         assertEquals(v010, cyl.getNormal(new Point(0, 1, 0.5)), "Bad normal to upper base of cylinder");
     }
+
+
+    /**
+     * Test method for {@link geometries.Plane#findIntersections(Ray)}.
+     * Tests the findIntersections method of the Plane class.
+     */
+    @Test
+    void findIntersections(){}
+
 
 }

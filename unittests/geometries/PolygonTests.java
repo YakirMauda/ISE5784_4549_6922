@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
 /**
@@ -21,6 +22,7 @@ public class PolygonTests {
 
     /**
      * Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}.
+     * Tests the constructor of the Polygon class.
      */
     @Test
     public void testConstructor() {
@@ -93,6 +95,7 @@ public class PolygonTests {
 
     /**
      * Test method for {@link geometries.Polygon#getNormal(primitives.Point)}.
+     * Tests the getNormal method of the Polygon class.
      */
     @Test
     public void testGetNormal() {
@@ -115,5 +118,13 @@ public class PolygonTests {
             assertEquals(0d, result.dotProduct(pts[i].subtract(pts[i == 0 ? 3 : i - 1])), DELTA,
                     "Polygon's normal is not orthogonal to one of the edges");
     }
+
+
+    /**
+     * Test method for {@link geometries.Plane#findIntersections(Ray)}.
+     * Tests the findIntersections method of the Plane class.
+     */
+    @Test
+    void findIntersections(){}
 
 }
