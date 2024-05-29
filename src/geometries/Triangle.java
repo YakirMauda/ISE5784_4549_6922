@@ -25,37 +25,28 @@ public class Triangle extends Polygon {
     @Override
     public List<Point> findIntersections(Ray ray) {
 
-        double EPSILON = 0.00001;
+        List<Point> lst = super.findIntersections(ray);
+        if (lst == null) return null;
 
         Point p0 = ray.getHead();
-        Vector dir = ray.getDirection();
+        Point p1 = this.vertices.getFirst();
+        Point p2 = this.vertices.get(1);
+        Point p3 = this.vertices.getLast();
 
-        Point v0 = vertices.get(0);
-        Point v1 = vertices.get(1);
-        Point v2 = vertices.get(2);
+        Vector v1 = p0.subtract(p1);
+        Vector v2 = p0.subtract(p2);
+        Vector v3 = p0.subtract(p3);
 
-        Vector v0v1 = v1.subtract(v0);
-        Vector v0v2 = v2.subtract(v0);
-        Vector pvec = dir.crossProduct(v0v2);
-        double det = v0v1.dotProduct(pvec);
+        Vector n1 = v1.crossProduct(v2).normalize();
+        Vector n2 = v2.crossProduct(v3).normalize();
+        Vector n3 = v3.crossProduct(v1).normalize();
 
-        if (Math.abs(det) < EPSILON) return null; // Parallel ray
+        double num1 = ray.getDirection().dotProduct(n1);
+        double num2 = ray.getDirection().dotProduct(n2);
+        double num3 = ray.getDirection().dotProduct(n3);
 
-        double invDet = 1 / det;
+        if(num1 > 0 && num2 > 0 && num3 > 0 || num1 < 0 && num2 < 0 && num3 < 0) return lst;
 
-        Vector tvec = p0.subtract(v0);
-        double u = tvec.dotProduct(pvec) * invDet;
-        if (u < 0 || u > 1) return null;
-
-        Vector qvec = tvec.crossProduct(v0v1);
-        double v = dir.dotProduct(qvec) * invDet;
-        if (v < 0 || u + v > 1) return null;
-
-        double t = v0v2.dotProduct(qvec) * invDet;
-
-        if (t > EPSILON) {
-            return List.of(ray.getPoint(t));
-        }
 
         return null;
     }

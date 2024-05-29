@@ -54,7 +54,7 @@ class TriangleTests {
 
         // TC02: On edge
         ray = new Ray(new Point(0, 0, 0), new Vector(1, 1, 0));
-        assertEquals(List.of(new Point(0, 0.5, 0)), plg.findIntersections(ray), "Wrong intersection with plane - on edge");
+        assertEquals(List.of(new Point(0.5, 0.5, 0)), plg.findIntersections(ray), "Wrong intersection with plane - on edge");
         assertNull(tr.findIntersections(ray), "Bad intersection");
 
         // TC03: On edge continuation

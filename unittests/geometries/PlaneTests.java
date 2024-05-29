@@ -56,6 +56,10 @@ class PlaneTests {
      */
     @Test
     void testFindIntersections(){
+        // =============== Boundary Values Tests ==================
+        // TC01: The ray on the plane (and paralle
+        Ray ray = new Ray(new Point(0, 0, 1), new Vector(0, 0, -1));
 
+        //
     }
 }
