@@ -55,7 +55,7 @@ class PlaneTests {
      * Tests the findIntersections method of the Plane class.
      */
     @Test
-    void findIntersections(){
+    void testFindIntersections(){
 
     }
 }
