@@ -34,27 +34,55 @@ public class Sphere extends RadialGeometry {
 
     @Override
     public List<Point> findIntersections(Ray ray) {
-       /** Vector u = center.subtract(ray.getHead());
+        Vector u;
+        try {
+            // Vector from the ray's origin to the sphere's center
+            u = center.subtract(ray.getHead());
+        } catch (IllegalArgumentException e) {
+            // Ray starts at the sphere's center, return the point on the sphere's surface
+            return List.of(ray.getPoint(radius));
+        }
+
+        // Projection of vector u onto the ray's direction
         double tm = alignZero(ray.getDirection().dotProduct(u));
-        double d = alignZero(sqrt(u.lengthSquared() - tm*tm));
-        if (d >= radius)
+
+        // Distance squared from the sphere's center to the ray's path
+        double dSquared = u.lengthSquared() - tm * tm;
+        double d = alignZero(sqrt(dSquared));
+
+        // If the distance is greater than the sphere's radius, there's no intersection
+        if (d >= radius) {
             return null;
+        }
 
-        double th = alignZero(sqrt(radius*radius - d*d));
-        double t1 = tm + th;
-        double t2 = tm - th;
+        // Distance from the closest point to the intersection points
+        double th = alignZero(sqrt(radius * radius - d * d));
 
-        if (t1 > 0 & t2 > 0)
+        // Intersection points along the ray
+        double t1 = alignZero(tm + th);
+        double t2 = alignZero(tm - th);
+
+        // Both intersection points are in front of the ray's origin
+        if (t1 > 0 && t2 > 0) {
             return List.of(ray.getPoint(t1), ray.getPoint(t2));
+        }
 
-        if (t1 > 0)
+        // Only the first intersection point is in front of the ray's origin
+        if (t1 > 0) {
             return List.of(ray.getPoint(t1));
+        }
 
-        if (t2 > 0)
+        // Only the second intersection point is in front of the ray's origin
+        if (t2 > 0) {
             return List.of(ray.getPoint(t2));
+        }
 
-        return null;
-        */
+        // No intersection points are in front of the ray's origin
         return null;
     }
+
 }
+
+
+
+
