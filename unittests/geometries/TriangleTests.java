@@ -59,13 +59,13 @@ class TriangleTests {
 
         // TC03: On edge continuation
         ray = new Ray(new Point(-1, -1.5, 0), new Vector(1, 0, 0));
-        assertEquals(List.of(new Point(0, 1.5, 0)), plg.findIntersections(ray), "Wrong intersection with plane - on edge");
+        assertEquals(List.of(new Point(2.5, -1.5, 0)), plg.findIntersections(ray), "Wrong intersection with plane - on edge continuation");
         assertNull(tr.findIntersections(ray), "Bad intersection");
 
         // ============ Equivalence Partitions Tests ==============
         // TC04: Inside triangle
         ray = new Ray(new Point(0, 0, 0.5), new Vector(1, 1, 0));
-        assertEquals(List.of(new Point(0.5, 0.5, 0.5)), plg.findIntersections(ray), "Wrong intersection with plane - inside triangle");
+        assertEquals(List.of(new Point(0.25, 0.25, 0.5)), plg.findIntersections(ray), "Wrong intersection with plane - inside triangle");
 
         // TC04: Outside triangle - against edge
         ray = new Ray(new Point(0, 0, -1), new Vector(1, 1, 0));

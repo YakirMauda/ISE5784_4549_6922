@@ -4,6 +4,8 @@ import primitives.*;
 
 import java.util.List;
 
+import static primitives.Util.*;
+
 /**
  * Represents a tube in a three-dimensional (3D) space.
  * A tube is defined by its radius and an axis - a Ray.
@@ -33,6 +35,10 @@ public class Tube extends RadialGeometry {
     @Override
     public Vector getNormal(Point point) {
         double t = point.subtract(axis.getHead()).dotProduct(axis.getDirection());
+
+        if(isZero(t))
+            return point.subtract(axis.getHead()).normalize();
+
         return point.subtract(axis.getPoint(t)).normalize();
     }
 

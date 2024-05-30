@@ -6,6 +6,8 @@ import primitives.Vector;
 import primitives.Ray;
 
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -16,6 +18,10 @@ class PlaneTests {
     /** Delta value for accuracy when comparing the numbers of type 'double' in
      * assertEquals */
     private final double DELTA = 0.000001;
+    private final Point p000 = new Point(0, 0, 0);
+    private final Point p100 = new Point(1, 0, 0);
+    private final Point p010 = new Point(0, 1, 0);
+    private final Point p001 = new Point(0, 0, 1);
 
     /**
      * Test method for {@link geometries.Plane#Plane(Point, Point, Point)}.
@@ -26,12 +32,12 @@ class PlaneTests {
         // =============== Boundary Values Tests ==================
         // TC01: Creating a plane with 2 points that are the same
         assertThrows(IllegalArgumentException.class, () -> {
-            new Plane(new Point(0, 0, 0), new Point(0, 0, 0), new Point(0, 1, 0));
+            new Plane(p000, p000, p010);
         }, "Constructed a plane with 2 points that are the same");
 
         // TC02: Creating a plane with 3 points that are on the same line
         assertThrows(IllegalArgumentException.class, () -> {
-            new Plane(new Point(0, 0, 0), new Point(1, 0, 0), new Point(2, 0, 0));
+            new Plane(p000, p100, new Point(2, 0, 0));
         }, "Constructed a plane with 3 points that are on the same line");
     }
 
@@ -43,10 +49,10 @@ class PlaneTests {
     void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here
-        Vector n = new Plane(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0)).getNormal(null);
+        Vector n = new Plane(p001, p100, p010).getNormal(null);
         assertEquals(1, n.length(), DELTA, "Bad normal length");
-        assertEquals(0, new Point(0, 0, 1).subtract(new Point(0, 1, 0)).dotProduct(n), DELTA, "Normal isn't orthogonal to plane");
-        assertEquals(0, new Point(0, 0, 1).subtract(new Point(1, 0, 0)).dotProduct(n), DELTA, "Normal isn't orthogonal to plane");
+        assertEquals(0, p001.subtract(p010).dotProduct(n), DELTA, "Normal isn't orthogonal to plane");
+        assertEquals(0, p001.subtract(p100).dotProduct(n), DELTA, "Normal isn't orthogonal to plane");
     }
 
 
@@ -56,10 +62,45 @@ class PlaneTests {
      */
     @Test
     void testFindIntersections(){
-        // =============== Boundary Values Tests ==================
-        // TC01: The ray on the plane (and paralle
-        Ray ray = new Ray(new Point(0, 0, 1), new Vector(0, 0, -1));
+        Plane pl = new Plane(p100, new Point(2, 0, 0), new Point(1, 1, 0));
 
-        //
+        // =============== Boundary Values Tests ==================
+        // TC01: The ray on the plane (and parallel of course)
+        Ray ray = new Ray(p100, new Vector(1, 0, 0));
+        assertNull(pl.findIntersections(ray), "Ray is on the plane");
+
+        // TC02: The ray is parallel to the plane but not on the plane
+        ray = new Ray(p001, new Vector(1, 0, 0));
+        assertNull(pl.findIntersections(ray), "Ray is parallel to the plane but not on the plane");
+
+        // TC03: The ray is orthogonal to the plane and starts before the plane
+        ray = new Ray(new Point(1,0,-1), new Vector(0, 0, 1));
+        assertEquals(List.of(p100), pl.findIntersections(ray), "Ray is orthogonal to the plane and starts before the plane");
+
+        // TC04: The ray is orthogonal to the plane and starts in the plane
+        ray = new Ray(p000, new Vector(0, 0, 1));
+        assertNull(pl.findIntersections(ray), "Ray is orthogonal to the plane and starts in the plane");
+
+        // TC05: The ray is orthogonal to the plane and starts after the plane
+        ray = new Ray(p001, new Vector(0, 0, 1));
+        assertNull(pl.findIntersections(ray), "Ray is orthogonal to the plane and starts after the plane");
+
+        // TC06: The ray is neither orthogonal nor parallel to the plane and starts on the plane at the represent point
+        ray = new Ray(p100, new Vector(1, 1, 0));
+        assertNull(pl.findIntersections(ray), "Ray is neither orthogonal nor parallel to the plane and starts on the plane at the represent point");
+
+        // TC07: The ray is neither orthogonal nor parallel to the plane and starts on the plane but not at the represent point
+        ray = new Ray(p010, new Vector(1, 1, 0));
+        assertNull(pl.findIntersections(ray), "Ray is neither orthogonal nor parallel to the plane and starts on the plane but not at the represent point");
+
+
+        // =============== Equivalence Partitions Tests ==============
+        // TC08: The ray is neither orthogonal nor parallel to the plane and starts before the plane
+        ray = new Ray(new Point(0,0,-1), new Vector(1, 1, 1));
+        assertEquals(List.of(new Point(1,1,0)), pl.findIntersections(ray), "Ray is neither orthogonal nor parallel to the plane and starts before the plane");
+
+        // TC09: The ray is neither orthogonal nor parallel to the plane and starts after the plane
+        ray = new Ray(p001, new Vector(1, 1, 1));
+        assertNull(pl.findIntersections(ray), "Ray is neither orthogonal nor parallel to the plane and starts after the plane");
     }
 }

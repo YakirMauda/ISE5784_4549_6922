@@ -7,6 +7,9 @@ import primitives.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
+
 /**
  * Represents a plane in three-dimensional space.
  */
@@ -59,20 +62,18 @@ public class Plane implements Geometry {
         if(ray.getHead().equals(q))
             return null;
 
-        //if the ray and the plane are parallel
-        if(ray.getDirection().dotProduct(normal) == 0)
+        //if the ray is parallel to the plane
+        double t = alignZero((normal.dotProduct(ray.getDirection())));
+        if(isZero(t))
             return null;
 
-        // alignzero???????????
 
-        //if the ray is the opposite direction of the normal?????????????
+        //if the ray is the opposite direction to the normal
+        t = alignZero(normal.dotProduct(q.subtract(ray.getHead()))) / t;
+        if(t <= 0)
+            return null;
 
-        double t = (normal.dotProduct(q.subtract(ray.getHead()))) / (normal.dotProduct(ray.getDirection()));
 
-        if(t != 0d) {   //checkkkkkkkkkkkkkkkkkkkk
-            return List.of(ray.getHead().add(ray.getDirection().scale(t)));
-        }
-
-        return null;
+        return List.of(ray.getHead().add(ray.getDirection().scale(t)));
     }
 }
