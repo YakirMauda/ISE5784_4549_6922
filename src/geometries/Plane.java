@@ -69,7 +69,7 @@ public class Plane implements Geometry {
 
 
         //if the ray is the opposite direction to the normal
-        t = alignZero(normal.dotProduct(q.subtract(ray.getPoint(0)))) / t;
+        t = alignZero(normal.dotProduct(q.subtract(ray.getPoint(0)))/ t);
         if(t <= 0)
             return null;
 

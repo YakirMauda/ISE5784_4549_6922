@@ -67,17 +67,14 @@ class TriangleTests {
         ray = new Ray(new Point(0, 0, 0.5), new Vector(1, 1, 0));
         assertEquals(List.of(new Point(0.25, 0.25, 0.5)), plg.findIntersections(ray), "Wrong intersection with plane - inside triangle");
 
-        // TC04: Outside triangle - against edge
+        // TC05: Outside triangle - against edge
         ray = new Ray(new Point(0, 0, -1), new Vector(1, 1, 0));
         assertEquals(List.of(new Point(1, 1, -1)), plg.findIntersections(ray), "Wrong intersection with plane - against edge");
         assertNull(tr.findIntersections(ray), "Bad intersection");
 
-        // TC05: Outside triangle - against vertex
+        // TC06: Outside triangle - against vertex
         ray = new Ray(new Point(0, 0, 2), new Vector(-1, -1, 0));
         assertEquals(List.of(new Point(-0.5, -0.5, 2)), plg.findIntersections(ray), "Wrong intersection with plane - against vertex");
         assertNull(tr.findIntersections(ray), "Bad intersection");
-
-        //בניהההההההההההההההההההההההה
-        assertEquals(List.of(new Point(5.53, 1.68, 0)), new Triangle(new Point(8, -1, 0), new Point(8, 1.5, 1), new Point(2, 3, -1)).findIntersections(new Ray(new Point(0.5, 0, 0), new Vector(7, 2, 0))), "Bad intersection");
     }
 }

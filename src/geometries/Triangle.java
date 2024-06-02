@@ -6,6 +6,8 @@ import primitives.Vector;
 
 import java.util.List;
 
+import static primitives.Util.*;
+
 /**
  * Represents a triangle in three-dimensional space.
  */
@@ -25,7 +27,7 @@ public class Triangle extends Polygon {
     @Override
     public List<Point> findIntersections(Ray ray) {
 
-        List<Point> lst = super.findIntersections(ray);
+        List<Point> lst = plane.findIntersections(ray);
         if (lst == null) return null;
 
         Point p0 = ray.getPoint(0);
@@ -45,8 +47,8 @@ public class Triangle extends Polygon {
         double num2 = ray.getDirection().dotProduct(n2);
         double num3 = ray.getDirection().dotProduct(n3);
 
-        if(num1 > 0 && num2 > 0 && num3 > 0 || num1 < 0 && num2 < 0 && num3 < 0) return lst;
-
+        if(alignZero(num1) > 0 && alignZero(num2) > 0 && alignZero(num3) > 0 ||
+                alignZero(num1) < 0 && alignZero(num2) < 0 && alignZero(num3) < 0) return lst;
 
         return null;
     }

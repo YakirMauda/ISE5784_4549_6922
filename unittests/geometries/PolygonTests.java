@@ -8,6 +8,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 /**
  * Testing Polygons
  *
@@ -125,6 +127,8 @@ public class PolygonTests {
      * Tests the findIntersections method of the Plane class.
      */
     @Test
-    void findIntersections(){}
+    void findIntersections() {
+
+    }
 
 }

@@ -38,13 +38,8 @@ public class Geometries implements Intersectable {
         this.geometries.addAll(Arrays.asList(geometries));
     }
 
-    /**
-     * Finds all intersection points of the given ray with the geometric shapes in the collection.
-     *
-     * @param ray The ray for which intersections need to be found.
-     * @return A list of Points where the ray intersects with the geometric shapes,
-     *         or null if there are no intersections.
-     */
+
+    @Override
     public List<Point> findIntersections(Ray ray) {
         List<Point> intersections = null;
         for (Intersectable geometry : geometries) {
