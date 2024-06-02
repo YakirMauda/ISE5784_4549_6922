@@ -37,7 +37,7 @@ public class Sphere extends RadialGeometry {
         Vector u;
         try {
             // Vector from the ray's origin to the sphere's center
-            u = center.subtract(ray.getHead());
+            u = center.subtract(ray.getPoint(0));
         } catch (IllegalArgumentException e) {
             // Ray starts at the sphere's center, return the point on the sphere's surface
             return List.of(ray.getPoint(radius));

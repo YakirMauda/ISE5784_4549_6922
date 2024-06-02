@@ -28,7 +28,7 @@ public class Triangle extends Polygon {
         List<Point> lst = super.findIntersections(ray);
         if (lst == null) return null;
 
-        Point p0 = ray.getHead();
+        Point p0 = ray.getPoint(0);
         Point p1 = this.vertices.getFirst();
         Point p2 = this.vertices.get(1);
         Point p3 = this.vertices.getLast();

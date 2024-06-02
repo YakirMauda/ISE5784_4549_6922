@@ -76,5 +76,8 @@ class TriangleTests {
         ray = new Ray(new Point(0, 0, 2), new Vector(-1, -1, 0));
         assertEquals(List.of(new Point(-0.5, -0.5, 2)), plg.findIntersections(ray), "Wrong intersection with plane - against vertex");
         assertNull(tr.findIntersections(ray), "Bad intersection");
+
+        //בניהההההההההההההההההההההההה
+        assertEquals(List.of(new Point(5.53, 1.68, 0)), new Triangle(new Point(8, -1, 0), new Point(8, 1.5, 1), new Point(2, 3, -1)).findIntersections(new Ray(new Point(0.5, 0, 0), new Vector(7, 2, 0))), "Bad intersection");
     }
 }

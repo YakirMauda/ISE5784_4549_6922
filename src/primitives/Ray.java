@@ -45,14 +45,6 @@ public class Ray {
         return "head: " + head + ", direction: " + direction;
     }
 
-    /**
-     * Returns the starting point of the ray.
-     *
-     * @return The starting point of the ray.
-     */
-    public Point getHead() {
-        return head;
-    }
 
     /**
      * Returns the direction vector of the ray.
@@ -64,17 +56,19 @@ public class Ray {
     }
 
     /**
-     * Returns a point on the ray at a distance {@code t} from the starting point.
-     * The point is calculated as {@code head + t * direction}.
+     * Returns a point on the ray at a given distance from the starting point.
+     * The point is computed as the starting point plus the direction vector
+     * scaled by the distance.
      *
-     * @param t  The distance from the starting point along the ray.
-     * @return The point on the ray at distance {@code t}.
-     * @throws IllegalArgumentException if {@code t} is zero.
+     * @param t The distance from the starting point along the direction vector.
+     * @return The point on the ray at the given distance.
      */
     public Point getPoint(double t) {
         if (isZero(t))
-            throw new IllegalArgumentException("Distance t must not be zero");
+            return head;
 
         return head.add(direction.scale(t));
     }
+
+
 }

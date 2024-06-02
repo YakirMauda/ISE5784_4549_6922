@@ -59,7 +59,7 @@ public class Plane implements Geometry {
     public List<Point> findIntersections(Ray ray) {
 
         //if the ray's head at the plane
-        if(ray.getHead().equals(q))
+        if(ray.getPoint(0).equals(q))
             return null;
 
         //if the ray is parallel to the plane
@@ -69,11 +69,11 @@ public class Plane implements Geometry {
 
 
         //if the ray is the opposite direction to the normal
-        t = alignZero(normal.dotProduct(q.subtract(ray.getHead()))) / t;
+        t = alignZero(normal.dotProduct(q.subtract(ray.getPoint(0)))) / t;
         if(t <= 0)
             return null;
 
 
-        return List.of(ray.getHead().add(ray.getDirection().scale(t)));
+        return List.of(ray.getPoint(0).add(ray.getDirection().scale(t)));
     }
 }

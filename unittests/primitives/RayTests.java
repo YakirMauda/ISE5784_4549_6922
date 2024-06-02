@@ -36,4 +36,19 @@ class RayTests {
         Ray r4 = new Ray(new Point(-1, -2, -3), new Vector(-1, 0, 0));
         assertNotEquals(r1.equals(r4), "ERROR: Ray with negative head and direction vectors equals to the original");
     }
+
+        @Test
+        void testGetPoint() {
+            //=============== Boundary Values Tests =================
+            // TC01: The distance is zero
+            assertEquals(new Point(1, 2, 3), r0.getPoint(0), "ERROR: The distance is zero");
+
+            // ============ Equivalence Partitions Tests ==============
+            // TC02: The distance is positive
+            assertEquals(new Point(2, 2, 3), r0.getPoint(1), "ERROR: The distance is positive");
+
+
+            // TC03: The distance is negative
+            assertEquals(new Point(0, 2, 3), r0.getPoint(-1), "ERROR: The distance is negative");
+        }
 }
