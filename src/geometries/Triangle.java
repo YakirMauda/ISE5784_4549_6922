@@ -26,30 +26,38 @@ public class Triangle extends Polygon {
 
     @Override
     public List<Point> findIntersections(Ray ray) {
-
+        // Find intersections with the underlying plane
         List<Point> lst = plane.findIntersections(ray);
         if (lst == null) return null;
 
+        // Get the origin point of the ray
         Point p0 = ray.getPoint(0);
+
+        // Define vectors from the origin point to each vertex of the polygon
         Point p1 = this.vertices.getFirst();
         Point p2 = this.vertices.get(1);
         Point p3 = this.vertices.getLast();
 
+        // Calculate vectors from the origin point to each vertex
         Vector v1 = p0.subtract(p1);
         Vector v2 = p0.subtract(p2);
         Vector v3 = p0.subtract(p3);
 
+        // Calculate normals for each edge of the polygon
         Vector n1 = v1.crossProduct(v2).normalize();
         Vector n2 = v2.crossProduct(v3).normalize();
         Vector n3 = v3.crossProduct(v1).normalize();
 
+        // Calculate dot products between ray direction and each normal
         double num1 = ray.getDirection().dotProduct(n1);
         double num2 = ray.getDirection().dotProduct(n2);
         double num3 = ray.getDirection().dotProduct(n3);
 
+        // Check if all dot products have the same sign, if so, return the intersections
         if(alignZero(num1) > 0 && alignZero(num2) > 0 && alignZero(num3) > 0 ||
                 alignZero(num1) < 0 && alignZero(num2) < 0 && alignZero(num3) < 0) return lst;
 
+        // Otherwise, return null indicating no intersections
         return null;
     }
 }

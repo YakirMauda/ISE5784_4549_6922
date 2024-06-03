@@ -36,10 +36,10 @@ class GeometriesTests {
         assertEquals(1, geometries.findIntersections(new Ray(new Point(2, 0, 0), new Vector(0, 0, 1))).size(), "Only one of the geometries is intersected");
 
         // TC04: All of the geometries are intersected
-        assertEquals(3, geometries.findIntersections(new Ray(new Point(0.5, 0, 0), new Vector(6, 1, 0))).size(), "All of the geometries are intersected");
+        assertEquals(4, geometries.findIntersections(new Ray(new Point(0.5, 0, 0), new Vector(6, 1, 0))).size(), "All of the geometries are intersected");
 
         // ============ Equivalence Partitions Tests ==============
         // TC05: Some of the geometries are intersected
-        assertEquals(2, geometries.findIntersections(new Ray(new Point(0.5, 0, 0), new Vector(6, -1, 0))).size(), "Some of the geometries are intersected");
+        assertEquals(3, geometries.findIntersections(new Ray(new Point(0.5, 0, 0), new Vector(6, -1, 0))).size(), "Some of the geometries are intersected");
     }
 }

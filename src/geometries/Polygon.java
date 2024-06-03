@@ -96,32 +96,36 @@ public class Polygon implements Geometry {
 
     @Override
     public List<Point> findIntersections(Ray ray) {
+        // Find intersections with the underlying plane
         List<Point> lst = plane.findIntersections(ray);
         if (lst == null) return null;
 
+        // Get the origin point of the ray
         Point p0 = ray.getPoint(0);
 
+        // Calculate vectors from the origin to each vertex of the polygon
         final Vector[] vectors = new Vector[size];
-
         for(int i = 0; i < size; ++i) {
             vectors[i] = p0.subtract(this.vertices.get(i));
         }
 
-       final Vector[] normals = new Vector[size];
-
+        // Calculate normals for each edge of the polygon
+        final Vector[] normals = new Vector[size];
         for(int i = 0; i < size; ++i) {
             normals[i] = vectors[i].crossProduct(vectors[(i + 1) % size]).normalize();
         }
 
+        // Calculate dot products between ray direction and each normal
         final List<Double> doubles = new java.util.ArrayList<>(List.of());
-
         for(int i = 0; i < size; ++i) {
             doubles.add(ray.getDirection().dotProduct(normals[i]));
         }
 
+        // Check if all dot products have the same sign, if so, return the intersections
         if(doubles.stream().allMatch(d -> alignZero(d) > 0) ||
-        doubles.stream().allMatch(d -> alignZero(d) < 0)) return lst;
+                doubles.stream().allMatch(d -> alignZero(d) < 0)) return lst;
 
+        // Otherwise, return null indicating no intersections
         return null;
     }
 }

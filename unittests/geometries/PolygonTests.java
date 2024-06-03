@@ -128,7 +128,41 @@ public class PolygonTests {
      */
     @Test
     void findIntersections() {
+        Polygon pol = new Polygon(new Point(0, 0, 1), new Point(2, 0, 1), new Point(2, 2, 1), new Point(0, 2, 1));
+        Plane pl = new Plane(new Point(0, 0, 1), new Point(1, 0, 1), new Point(0, 1, 1));
+        Ray ray;
 
+        // =============== Boundary Values Tests ==================
+        // TC01: In vertex
+        ray = new Ray(new Point(0, 2, 0), new Vector(0, 0, 1));
+        assertEquals(List.of(new Point(0, 2, 1)), pl.findIntersections(ray), "Invalid intersection with the plane");
+        assertNull(pol.findIntersections(ray), "Invalid intersection");
+
+        // TC02: On edge
+        ray = new Ray(new Point(0, 1, 0), new Vector(0, 0, 1));
+        assertEquals(List.of(new Point(0, 1, 1)), pl.findIntersections(ray), "Invalid intersection with the plane");
+        assertNull(pol.findIntersections(ray), "Invalid intersection");
+
+        // TC03: On edge continuation
+        ray = new Ray(new Point(0, 3, 0), new Vector(0, 0, 1));
+        assertEquals(List.of(new Point(0, 3, 1)), pl.findIntersections(ray), "Invalid intersection with the plane");
+        assertNull(pol.findIntersections(ray), "Invalid intersection");
+
+
+        // ============ Equivalence Partitions Tests ==============
+        // TC04: Inside polygon
+        ray = new Ray(new Point(1, 1, 0), new Vector(0, 0, 1));
+        assertEquals(List.of(new Point(1, 1, 1)), pol.findIntersections(ray), "Bad intersection");
+
+        // TC05: Against edge
+        ray = new Ray(new Point(-1, 1, 0), new Vector(0, 0, 1));
+        assertEquals(List.of(new Point(-1, 1, 1)), pl.findIntersections(ray), "Invalid intersection with the plane");
+        assertNull(pol.findIntersections(ray), "Invalid intersection");
+
+        // TC06: Against vertex
+        ray = new Ray(new Point(-1, -1, 0), new Vector(0, 0, 1));
+        assertEquals(List.of(new Point(-1, -1, 1)), pl.findIntersections(ray), "Invalid intersection with the plane");
+        assertNull(pol.findIntersections(ray), "Invalid intersection");
     }
 
 }
