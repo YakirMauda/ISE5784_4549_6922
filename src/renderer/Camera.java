@@ -1,6 +1,5 @@
 package renderer;
 
-
 import primitives.*;
 
 import java.util.MissingResourceException;
@@ -8,57 +7,112 @@ import java.util.MissingResourceException;
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
+/**
+ * Represents a camera in the 3D space, with its position and orientation vectors.
+ * Provides methods to construct rays through the view plane and a builder for
+ * constructing camera instances.
+ */
 public class Camera implements Cloneable {
 
+    /** The position of the camera */
     private Point position;
+
+    /** The direction vector towards the view plane */
     private Vector vTo;
+
+    /** The upward direction vector */
     private Vector vUp;
+
+    /** The right direction vector */
     private Vector vRight;
+
+    /** The height of the view plane */
     private double viewPlaneHigh = 0.0;
+
+    /** The width of the view plane */
     private double viewPlaneWidth = 0.0;
+
+    /** The distance from the camera to the view plane */
     private double viewPlaneDistance = 0.0;
 
+    /**
+     * Private constructor to prevent direct instantiation.
+     */
     private Camera() {
     }
 
-    @Override
-    public Camera clone() {
-        try {
-            return (Camera) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError();
-        }
-    }
-
+    /**
+     * Gets the position of the camera.
+     *
+     * @return the position of the camera
+     */
     public Point getPosition() {
         return position;
     }
 
+    /**
+     * Gets the direction vector towards the view plane.
+     *
+     * @return the direction vector (vTo)
+     */
     public Vector getvTo() {
         return vTo;
     }
 
+    /**
+     * Gets the upward direction vector of the camera.
+     *
+     * @return the upward direction vector (vUp)
+     */
     public Vector getvUp() {
         return vUp;
     }
 
+    /**
+     * Gets the right direction vector of the camera.
+     *
+     * @return the right direction vector (vRight)
+     */
     public Vector getvRight() {
         return vRight;
     }
 
+    /**
+     * Gets the distance from the camera to the view plane.
+     *
+     * @return the view plane distance
+     */
     public double getViewPlaneDistance() {
         return viewPlaneDistance;
     }
 
+    /**
+     * Gets the height of the view plane.
+     *
+     * @return the view plane height
+     */
     public double getViewPlaneHigh() {
         return viewPlaneHigh;
     }
 
+    /**
+     * Gets the width of the view plane.
+     *
+     * @return the view plane width
+     */
     public double getViewPlaneWidth() {
         return viewPlaneWidth;
     }
 
-
+    /**
+     * Constructs a ray through the view plane from the camera's position.
+     *
+     * @param nX number of pixels in the X direction
+     * @param nY number of pixels in the Y direction
+     * @param j  pixel column index
+     * @param i  pixel row index
+     * @return the constructed ray
+     */
     public Ray constructRay(int nX, int nY, int j, int i) {
         Point pCenter = position.add(vTo.scale(viewPlaneDistance));
 
@@ -77,11 +131,19 @@ public class Camera implements Cloneable {
         return new Ray(position, pIJ.subtract(position).normalize());
     }
 
-
+    /**
+     * Builder class for constructing Camera instances.
+     */
     public static class Builder {
+        /** The Camera instance being built */
         final private Camera camera = new Camera();
 
-
+        /**
+         * Sets the location of the camera.
+         *
+         * @param position the position of the camera
+         * @return the builder instance
+         */
         public Builder setLocation(Point position) {
             if (position == null)
                 throw new IllegalArgumentException("Camera position cannot be null");
@@ -89,16 +151,29 @@ public class Camera implements Cloneable {
             return this;
         }
 
+        /**
+         * Sets the direction vectors of the camera.
+         *
+         * @param vTo the direction vector towards the view plane
+         * @param vUp the upward direction vector
+         * @return the builder instance
+         */
         public Builder setDirection(Vector vTo, Vector vUp) {
             if (!isZero(vTo.dotProduct(vUp)))
-                throw new IllegalArgumentException("vTo and vUp are not orthogonal each other");
+                throw new IllegalArgumentException("vTo and vUp are not orthogonal to each other");
             camera.vTo = vTo.normalize();
             camera.vUp = vUp.normalize();
             camera.vRight = camera.vTo.crossProduct(camera.vUp);
             return this;
         }
 
-
+        /**
+         * Sets the size of the view plane.
+         *
+         * @param width  the width of the view plane
+         * @param height the height of the view plane
+         * @return the builder instance
+         */
         public Builder setVpSize(double width, double height) {
             if (alignZero(width) <= 0 || alignZero(height) <= 0)
                 throw new IllegalArgumentException("width and height must be positive");
@@ -107,6 +182,12 @@ public class Camera implements Cloneable {
             return this;
         }
 
+        /**
+         * Sets the distance from the camera to the view plane.
+         *
+         * @param distance the view plane distance
+         * @return the builder instance
+         */
         public Builder setVpDistance(double distance) {
             if (alignZero(distance) <= 0)
                 throw new IllegalArgumentException("distance must be positive");
@@ -114,7 +195,12 @@ public class Camera implements Cloneable {
             return this;
         }
 
-
+        /**
+         * Builds and returns the Camera instance.
+         *
+         * @return the constructed Camera instance
+         * @throws MissingResourceException if any required camera parameter is missing
+         */
         public Camera build() {
             final String DATA_MISS = "Missing rendering data";
             final String NAME = "Camera";
@@ -128,7 +214,6 @@ public class Camera implements Cloneable {
             if (camera.vRight == null)
                 throw new MissingResourceException(DATA_MISS, NAME, "Camera vRight direction");
 
-
             if (alignZero(camera.viewPlaneWidth) == 0)
                 throw new MissingResourceException(DATA_MISS, NAME, "Camera view plane width");
             if (alignZero(camera.viewPlaneHigh) == 0)
@@ -139,15 +224,16 @@ public class Camera implements Cloneable {
             // Calculate the right vector
             camera.vRight = camera.vTo.crossProduct(camera.vUp).normalize();
 
-            return (Camera) camera.clone();
-
+            try {
+                return (Camera) camera.clone();
+            } catch (CloneNotSupportedException e) {
+                throw new RuntimeException(e);
+            }
         }
-
-
     }
 
     /**
-     * Provide builder object for creating Camera
+     * Provides a builder object for creating Camera instances.
      *
      * @return the camera builder object
      */
