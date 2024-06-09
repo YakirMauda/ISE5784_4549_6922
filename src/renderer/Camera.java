@@ -3,21 +3,20 @@ package renderer;
 
 import primitives.*;
 
-import java.util.BitSet;
 import java.util.MissingResourceException;
 
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
-public class Camera implements Cloneable{
+public class Camera implements Cloneable {
 
     private Point position;
     private Vector vTo;
     private Vector vUp;
     private Vector vRight;
-    private double ViewPlaneHigh = 0.0;
-    private double ViewPlaneWidth = 0.0;
-    private double ViewPlaneDistance = 0.0;
+    private double viewPlaneHigh = 0.0;
+    private double viewPlaneWidth = 0.0;
+    private double viewPlaneDistance = 0.0;
 
     private Camera() {
     }
@@ -48,18 +47,36 @@ public class Camera implements Cloneable{
     }
 
     public double getViewPlaneDistance() {
-        return ViewPlaneDistance;
+        return viewPlaneDistance;
     }
 
     public double getViewPlaneHigh() {
-        return ViewPlaneHigh;
+        return viewPlaneHigh;
     }
 
     public double getViewPlaneWidth() {
-        return ViewPlaneWidth;
+        return viewPlaneWidth;
     }
 
-    public Ray constructRay(int nX, int nY, int j, int i) {return null;};
+
+    public Ray constructRay(int nX, int nY, int j, int i) {
+        Point pCenter = position.add(vTo.scale(viewPlaneDistance));
+
+        double rX = viewPlaneWidth / nX;
+        double rY = viewPlaneHigh / nY;
+
+        double xj = (j - ((nX - 1) / 2d)) * rX;
+        double yi = (((nY - 1) / 2d) - i) * rY;
+
+        Point pIJ = pCenter;
+        if (!isZero(xj))
+            pIJ = pIJ.add(vRight.scale(xj));
+        if (!isZero(yi))
+            pIJ = pIJ.add(vUp.scale(yi));
+
+        return new Ray(position, pIJ.subtract(position).normalize());
+    }
+
 
     public static class Builder {
         final private Camera camera = new Camera();
@@ -77,6 +94,7 @@ public class Camera implements Cloneable{
                 throw new IllegalArgumentException("vTo and vUp are not orthogonal each other");
             camera.vTo = vTo.normalize();
             camera.vUp = vUp.normalize();
+            camera.vRight = camera.vTo.crossProduct(camera.vUp);
             return this;
         }
 
@@ -84,18 +102,17 @@ public class Camera implements Cloneable{
         public Builder setVpSize(double width, double height) {
             if (alignZero(width) <= 0 || alignZero(height) <= 0)
                 throw new IllegalArgumentException("width and height must be positive");
-            camera.ViewPlaneWidth = width;
-            camera.ViewPlaneHigh = height;
+            camera.viewPlaneWidth = width;
+            camera.viewPlaneHigh = height;
             return this;
         }
 
         public Builder setVpDistance(double distance) {
             if (alignZero(distance) <= 0)
                 throw new IllegalArgumentException("distance must be positive");
-            camera.ViewPlaneDistance = distance;
+            camera.viewPlaneDistance = distance;
             return this;
         }
-
 
 
         public Camera build() {
@@ -112,11 +129,11 @@ public class Camera implements Cloneable{
                 throw new MissingResourceException(DATA_MISS, NAME, "Camera vRight direction");
 
 
-            if (alignZero(camera.ViewPlaneWidth) == 0)
+            if (alignZero(camera.viewPlaneWidth) == 0)
                 throw new MissingResourceException(DATA_MISS, NAME, "Camera view plane width");
-            if (alignZero(camera.ViewPlaneHigh) == 0)
+            if (alignZero(camera.viewPlaneHigh) == 0)
                 throw new MissingResourceException(DATA_MISS, NAME, "Camera view plane height");
-            if (alignZero(camera.ViewPlaneDistance) == 0)
+            if (alignZero(camera.viewPlaneDistance) == 0)
                 throw new MissingResourceException(DATA_MISS, NAME, "Camera view plane distance");
 
             // Calculate the right vector
@@ -126,5 +143,15 @@ public class Camera implements Cloneable{
 
         }
 
+
+    }
+
+    /**
+     * Provide builder object for creating Camera
+     *
+     * @return the camera builder object
+     */
+    public static Builder getBuilder() {
+        return new Builder();
     }
 }
