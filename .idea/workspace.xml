@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="create Camera and finish 2/3 pages of the mission">
-      <change afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/ImageWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/ImageWriterTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/ImageWriterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/ImageWriterTests.java" afterDir="false" />
     </list>
     <list id="1e5b6468-eec7-4bdd-80ea-2091f5835169" name="Changes by user" comment="Changes by user" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -72,6 +72,7 @@
     "JUnit.CylinderTests.testGetNormal.executor": "Run",
     "JUnit.GeometriesTests.executor": "Run",
     "JUnit.GeometriesTests.testFindIntersections.executor": "Debug",
+    "JUnit.ImageWriterTests.ImageWriterTest.executor": "Run",
     "JUnit.PlaneTests.testFindIntersections.executor": "Run",
     "JUnit.PointTest.add.executor": "Run",
     "JUnit.PointTest.distance.executor": "Run",
@@ -107,7 +108,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/IdeaProjects/ISE5784_4549_6922/src/renderer",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/ISE5784_4549_6922/src/renderer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -142,7 +143,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ISE5784_4549_6922">
+  <component name="RunManager" selected="JUnit.ImageWriterTests.ImageWriterTest">
     <configuration name="All in ISE5784_4549_6922" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <option name="PACKAGE_NAME" value="" />
@@ -198,28 +199,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GeometriesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageWriterTests.ImageWriterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="geometries.*" />
+          <option name="PATTERN" value="renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.GeometriesTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTests" />
+      <option name="METHOD_NAME" value="ImageWriterTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageWriterTests.ImageWriterTest" />
         <item itemvalue="JUnit.All in ISE5784_4549_6922" />
         <item itemvalue="JUnit.CameraRayIntersectionsIntegrationTests.cameraRayPlaneIntegration" />
         <item itemvalue="JUnit.CameraRayIntersectionsIntegrationTests.testCameraRaySphereIntegration" />
         <item itemvalue="JUnit.CameraTest" />
-        <item itemvalue="JUnit.GeometriesTests" />
       </list>
     </recent_temporary>
   </component>
