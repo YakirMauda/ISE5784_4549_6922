@@ -250,11 +250,10 @@ public class Camera implements Cloneable {
                 throw new MissingResourceException(DATA_MISS, NAME, "Camera view plane distance");
 
 
-            /*
             if (camera.imageWriter == null)
                 throw new MissingResourceException(DATA_MISS, DATA_MISS, "image writer");
             if (camera.rayTracer == null) throw new MissingResourceException(DATA_MISS, DATA_MISS, "ray tracer");
-            **/
+
             // Calculate the right vector
             camera.vRight = camera.vTo.crossProduct(camera.vUp).normalize();
 
