@@ -13,7 +13,7 @@ import static primitives.Util.isZero;
 /**
  * Represents a plane in three-dimensional space.
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
 
     private final Point q;
     private final Vector normal;
@@ -56,24 +56,26 @@ public class Plane implements Geometry {
         return normal; }
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) {
+        Point p0 = ray.getHead();
+        Vector v = ray.getDirection();
 
         //if the ray's head at the plane
-        if(ray.getPoint(0).equals(q))
+        if(p0.equals(q))
             return null;
 
         //if the ray is parallel to the plane
-        double t = alignZero((normal.dotProduct(ray.getDirection())));
+        double t = alignZero((normal.dotProduct(v)));
         if(isZero(t))
             return null;
 
 
         //if the ray is the opposite direction to the normal
-        t = alignZero(normal.dotProduct(q.subtract(ray.getPoint(0)))/ t);
+        t = alignZero(normal.dotProduct(q.subtract(p0))/ t);
         if(t <= 0)
             return null;
 
 
-        return List.of(ray.getPoint(0).add(ray.getDirection().scale(t)));
+        return List.of(new GeoPoint(this, ray.getPoint(t)));
     }
 }

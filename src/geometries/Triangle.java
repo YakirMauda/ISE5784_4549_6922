@@ -25,13 +25,14 @@ public class Triangle extends Polygon {
     }
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance){
         // Find intersections with the underlying plane
-        List<Point> lst = plane.findIntersections(ray);
+        List<GeoPoint> lst = plane.findGeoIntersectionsHelper(ray,maxDistance);
         if (lst == null) return null;
 
         // Get the origin point of the ray
-        Point p0 = ray.getPoint(0);
+        Point p0 = ray.getHead();
+        Vector v = ray.getDirection();
 
         // Define vectors from the origin point to each vertex of the polygon
         Point p1 = this.vertices.getFirst();
@@ -49,13 +50,14 @@ public class Triangle extends Polygon {
         Vector n3 = v3.crossProduct(v1).normalize();
 
         // Calculate dot products between ray direction and each normal
-        double num1 = ray.getDirection().dotProduct(n1);
-        double num2 = ray.getDirection().dotProduct(n2);
-        double num3 = ray.getDirection().dotProduct(n3);
+        double num1 = v.dotProduct(n1);
+        double num2 = v.dotProduct(n2);
+        double num3 = v.dotProduct(n3);
 
         // Check if all dot products have the same sign, if so, return the intersections
         if(alignZero(num1) > 0 && alignZero(num2) > 0 && alignZero(num3) > 0 ||
-                alignZero(num1) < 0 && alignZero(num2) < 0 && alignZero(num3) < 0) return lst;
+                alignZero(num1) < 0 && alignZero(num2) < 0 && alignZero(num3) < 0)
+            return List.of(new GeoPoint(this, lst.get(0).point ));
 
         // Otherwise, return null indicating no intersections
         return null;

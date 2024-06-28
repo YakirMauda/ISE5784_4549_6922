@@ -11,7 +11,7 @@ import java.util.List;
  * The Geometries class represents a collection of geometric shapes that can be intersected by a ray.
  * It implements the Intersectable interface.
  */
-public class Geometries implements Intersectable {
+public class Geometries extends Intersectable {
 
     private final List<Intersectable> geometries = new LinkedList<>();
 
@@ -40,10 +40,10 @@ public class Geometries implements Intersectable {
 
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
-        List<Point> intersections = null;
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) {
+        List<GeoPoint> intersections = null;
         for (Intersectable geometry : geometries) {
-            List<Point> geometryIntersections = geometry.findIntersections(ray);
+            List<GeoPoint> geometryIntersections = geometry.findGeoIntersections(ray,maxDistance);
             if (geometryIntersections != null) {
                 if (intersections == null) {
                     intersections = new LinkedList<>();

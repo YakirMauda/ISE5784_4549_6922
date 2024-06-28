@@ -1,5 +1,8 @@
 package primitives;
 
+import geometries.Intersectable;
+import geometries.Intersectable.GeoPoint;
+
 import java.util.List;
 
 import static primitives.Util.isZero;
@@ -11,6 +14,7 @@ import static primitives.Util.isZero;
  * Instances of this class are immutable.
  */
 public class Ray {
+
 
     /** The starting point of the ray. */
     final private Point head;
@@ -57,6 +61,10 @@ public class Ray {
         return direction;
     }
 
+    public Point getHead() {
+        return head;
+    }
+
     /**
      * Returns a point on the ray at a given distance from the starting point.
      * The point is computed as the starting point plus the direction vector
@@ -74,6 +82,13 @@ public class Ray {
 
 
 
+    public Point findClosestPoint(List<Point> points) {
+        return points == null || points.isEmpty() ? null
+                : findClosestGeoPoint(points.stream()
+                .map(p -> new GeoPoint(null, p))
+                .toList()).point;
+    }
+
     /**
      * Finds the closest point to the ray's head from a list of points.
      * If the list is empty or null, returns null.
@@ -81,17 +96,17 @@ public class Ray {
      * @param lst The list of points to search through.
      * @return The closest point to the ray's head, or null if the list is empty or null.
      */
-    public Point findClosestPoint(List<Point> lst) {
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> lst) {
         if (lst == null)
             return null;
 
-        Point closestPoint = null;
+        GeoPoint closestPoint = null;
         double closestDistance = Double.POSITIVE_INFINITY;
 
-        for (Point point : lst) {
-            double distance = head.distanceSquared(point); //מקווה שעובד
+        for (GeoPoint geoPoint : lst) {
+            double distance = head.distanceSquared(geoPoint.point); //מקווה שעובד
             if (distance < closestDistance) {
-                closestPoint = point;
+                closestPoint = geoPoint;
                 closestDistance = distance;
             }
         }

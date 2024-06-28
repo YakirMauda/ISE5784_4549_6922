@@ -33,14 +33,14 @@ public class Sphere extends RadialGeometry {
     }
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) {
         Vector u;
         try {
             // Vector from the ray's origin to the sphere's center
             u = center.subtract(ray.getPoint(0));
         } catch (IllegalArgumentException e) {
             // Ray starts at the sphere's center, return the point on the sphere's surface
-            return List.of(ray.getPoint(radius));
+            return List.of(new GeoPoint(this,ray.getPoint(radius)));
         }
 
         // Projection of vector u onto the ray's direction
@@ -64,17 +64,19 @@ public class Sphere extends RadialGeometry {
 
         // Both intersection points are in front of the ray's origin
         if (t1 > 0 && t2 > 0) {
-            return List.of(ray.getPoint(t1), ray.getPoint(t2));
+            return List.of(
+                    new GeoPoint(this,ray.getPoint(t1)),
+                    new GeoPoint(this,ray.getPoint(t2)));
         }
 
         // Only the first intersection point is in front of the ray's origin
         if (t1 > 0) {
-            return List.of(ray.getPoint(t1));
+            return List.of(new GeoPoint(this,ray.getPoint(t1)));
         }
 
         // Only the second intersection point is in front of the ray's origin
         if (t2 > 0) {
-            return List.of(ray.getPoint(t2));
+            return List.of(new GeoPoint(this,ray.getPoint(t2)));
         }
 
         // No intersection points are in front of the ray's origin

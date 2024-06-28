@@ -15,7 +15,7 @@ import primitives.Vector;
  *
  * @author Dan
  */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
     /**
      * List of polygon's vertices
      */
@@ -95,13 +95,15 @@ public class Polygon implements Geometry {
     }
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) {
         // Find intersections with the underlying plane
-        List<Point> lst = plane.findIntersections(ray);
-        if (lst == null) return null;
+        List<GeoPoint> lst = plane.findGeoIntersections(ray,maxDistance);
+        if (lst == null)
+            return null;
 
         // Get the origin point of the ray
-        Point p0 = ray.getPoint(0);
+        Point p0 = ray.getHead();
+        Vector v = ray.getDirection();
 
         // Calculate vectors from the origin to each vertex of the polygon
         final Vector[] vectors = new Vector[size];
@@ -118,12 +120,15 @@ public class Polygon implements Geometry {
         // Calculate dot products between ray direction and each normal
         final List<Double> doubles = new java.util.ArrayList<>(List.of());
         for(int i = 0; i < size; ++i) {
-            doubles.add(ray.getDirection().dotProduct(normals[i]));
+            doubles.add(alignZero(v.dotProduct(normals[i])));
         }
 
         // Check if all dot products have the same sign, if so, return the intersections
-        if(doubles.stream().allMatch(d -> alignZero(d) > 0) ||
-                doubles.stream().allMatch(d -> alignZero(d) < 0)) return lst;
+       boolean allPositive = doubles.stream().allMatch(d -> d > 0);
+       boolean allNegative = doubles.stream().allMatch(d -> d < 0);
+
+       if (allPositive || allNegative)
+           return List.of(new GeoPoint(this, lst.get(0).point));
 
         // Otherwise, return null indicating no intersections
         return null;
