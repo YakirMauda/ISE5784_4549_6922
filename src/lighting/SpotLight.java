@@ -4,6 +4,8 @@ import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
+
 public class SpotLight extends PointLight {
 
     private Vector direction;
@@ -20,15 +22,15 @@ public class SpotLight extends PointLight {
     }
 
 
-    public SpotLight setKC(double kC) {
-        return (SpotLight) super.setKC(kC);
+    public SpotLight setKc(double kC) {
+        return (SpotLight) super.setKc(kC);
     }
 
-    public SpotLight setKL(double kL) {
-        return (SpotLight) super.setKL(kL);
+    public SpotLight setKl(double kL) {
+        return (SpotLight) super.setKl(kL);
     }
 
-    public SpotLight setKQ(double kQ) {
-        return (SpotLight) super.setKQ(kQ);
+    public SpotLight setKq(double kQ) {
+        return (SpotLight) super.setKq(kQ);
     }
 }

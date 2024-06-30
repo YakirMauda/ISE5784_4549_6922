@@ -2,7 +2,12 @@ package scene;
 
 import geometries.Geometries;
 import lighting.AmbientLight;
+import lighting.LightSource;
 import primitives.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
 import static java.awt.Color.*;
 
 /**
@@ -21,6 +26,8 @@ public class Scene {
 
     /** The geometries present in the scene */
     public Geometries geometries = new Geometries();
+
+    public List<LightSource> lights = new LinkedList<>();
 
     /**
      * Constructs a scene with a specified name.
@@ -61,6 +68,11 @@ public class Scene {
      */
     public Scene setGeometries(Geometries geometries) {
         this.geometries = geometries;
+        return this;
+    }
+
+    public Scene setLights(List<LightSource> lights) {
+        this.lights = lights;
         return this;
     }
 }
