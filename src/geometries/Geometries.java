@@ -13,6 +13,9 @@ import java.util.List;
  */
 public class Geometries extends Intersectable {
 
+    /**
+     * A list of intersectable geometric shapes.
+     */
     private final List<Intersectable> geometries = new LinkedList<>();
 
     /**
@@ -38,19 +41,27 @@ public class Geometries extends Intersectable {
         this.geometries.addAll(Arrays.asList(geometries));
     }
 
-
     @Override
     protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) {
+        // Initialize a list to hold the intersection points
         List<GeoPoint> intersections = null;
+
+        // Iterate through each geometry in the collection
         for (Intersectable geometry : geometries) {
-            List<GeoPoint> geometryIntersections = geometry.findGeoIntersections(ray,maxDistance);
+            // Find intersections of the ray with the current geometry within the maximum distance
+            List<GeoPoint> geometryIntersections = geometry.findGeoIntersections(ray, maxDistance);
+
+            // If intersections are found, add them to the main intersections list
             if (geometryIntersections != null) {
+                // Lazy initialization of the intersections list
                 if (intersections == null) {
                     intersections = new LinkedList<>();
                 }
+                // Add all intersections of the current geometry to the main list
                 intersections.addAll(geometryIntersections);
             }
         }
+        // Return the list of all intersection points, or null if no intersections are found
         return intersections;
     }
 }
