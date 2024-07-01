@@ -193,4 +193,43 @@ public class LightsTests {
          .writeToImage();
    }
 
+
+   /**
+    * Tests rendering with several spotlights shining on triangles in the scene.
+    * Adds triangles to the geometry, sets up multiple spotlights with different
+    * colors, positions, and directions, and renders the scene to an image named
+    * "trianglesMultiSpot". This test checks how well the rendering works with
+    * multiple spotlights.
+    */
+   @Test
+   public void trianglesMultiSpot() {
+      scene2.geometries.add(triangle1, triangle2);
+      scene2.lights.add(new SpotLight(trianglesLightColor, trianglesLightPosition, trianglesLightDirection)
+              .setKl(0.001).setKq(0.0001));
+      scene2.lights.add(new SpotLight(new Color(800, 0, 500), new Point(30, 10, -100), new Vector(2, 2, -2))
+              .setKl(0.001).setKq(0.0001));
+      scene2.lights.add(new SpotLight(new Color(0, 0, 1000), new Point(30, 10, -100), new Vector(-2, 2, 2))
+              .setKl(0.001).setKq(0.0001));
+
+      camera2.setImageWriter(new ImageWriter("trianglesMultiSpot", 500, 500)).build().renderImage().writeToImage();
+   }
+
+   /**
+    * Tests rendering with several directional lights shining on a sphere in the
+    * scene. Adds a sphere to the geometry, sets up multiple directional lights
+    * with different colors and directions, and renders the scene to an image named
+    * "sphereMultiDirectional". This test checks how well the rendering works with
+    * multiple directional lights.
+    */
+   @Test
+   public void sphereMultiDirectional() {
+      scene1.geometries.add(sphere);
+      scene1.lights.add(new DirectionalLight(sphereLightColor, sphereLightDirection));
+      scene1.lights.add(new DirectionalLight(new Color(800, 800, 0), new Vector(-1, -1, 0.7)));
+
+      camera1.setImageWriter(new ImageWriter("sphereMultiDirectional", 500, 500)).build().renderImage()
+              .writeToImage();
+   }
+
+
 }

@@ -21,25 +21,35 @@ public class SimpleRayTracer extends RayTracerBase {
         super(scene);
     }
 
+
     @Override
     public Color traceRay(Ray ray) {
-        // Find the closest intersection point of the ray with the scene's geometries
         GeoPoint geoPoint = ray.findClosestGeoPoint(scene.geometries.findGeoIntersections(ray));
-
-        // If no intersection point is found, return the background color.
-        // Otherwise, calculate the color at the intersection point.
         return geoPoint == null ? scene.background : calcColor(geoPoint, ray);
     }
 
-    // Calculates the color at a given point.
+    /**
+     * Calculates the color at a given intersection point.
+     *
+     * @param geoPoint the intersection point
+     * @param ray the ray that intersects the point
+     * @return the color at the intersection point
+     */
     private Color calcColor(GeoPoint geoPoint, Ray ray) {
         return scene.ambientLight.getIntensity()
                 .add(calcLocalEffects(geoPoint, ray));
     }
 
+    /**
+     * Calculates the local lighting effects at a given intersection point.
+     *
+     * @param gp the intersection point
+     * @param ray the ray that intersects the point
+     * @return the color contribution from local lighting effects
+     */
     private Color calcLocalEffects(GeoPoint gp, Ray ray) {
         Vector n = gp.geometry.getNormal(gp.point);
-        Vector v = ray.getDirection ();
+        Vector v = ray.getDirection();
         double nv = alignZero(n.dotProduct(v));
         if (nv == 0) return Color.BLACK;
         Material material = gp.geometry.getMaterial();
@@ -55,13 +65,29 @@ public class SimpleRayTracer extends RayTracerBase {
             }
         }
         return color;
-
     }
 
+    /**
+     * Calculates the diffuse reflection component of the lighting.
+     *
+     * @param mat the material of the intersected geometry
+     * @param nl the dot product of the normal and light direction vectors
+     * @return the diffuse reflection component
+     */
     private Double3 calcDiffusive(Material mat, double nl) {
         return mat.kD.scale(Math.abs(nl));
     }
 
+    /**
+     * Calculates the specular reflection component of the lighting.
+     *
+     * @param mat the material of the intersected geometry
+     * @param n the normal vector at the intersection point
+     * @param l the light direction vector
+     * @param nl the dot product of the normal and light direction vectors
+     * @param v the view direction vector
+     * @return the specular reflection component
+     */
     private Double3 calcSpecular(Material mat, Vector n, Vector l, double nl, Vector v) {
         Vector r = l.subtract(n.scale(2 * nl));
         double vr = alignZero(v.dotProduct(r.scale(-1)));

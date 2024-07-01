@@ -27,6 +27,7 @@ public class Scene {
     /** The geometries present in the scene */
     public Geometries geometries = new Geometries();
 
+    /** The lights present in the scene */
     public List<LightSource> lights = new LinkedList<>();
 
     /**
@@ -42,7 +43,7 @@ public class Scene {
      * Sets the background color of the scene.
      *
      * @param background the background color to set
-     * @return the current scene instance
+     * @return the current Scene instance
      */
     public Scene setBackground(Color background) {
         this.background = background;
@@ -53,7 +54,7 @@ public class Scene {
      * Sets the ambient light of the scene.
      *
      * @param ambientLight the ambient light to set
-     * @return the current scene instance
+     * @return the current Scene instance
      */
     public Scene setAmbientLight(AmbientLight ambientLight) {
         this.ambientLight = ambientLight;
@@ -64,13 +65,19 @@ public class Scene {
      * Sets the geometries in the scene.
      *
      * @param geometries the geometries to set
-     * @return the current scene instance
+     * @return the current Scene instance
      */
     public Scene setGeometries(Geometries geometries) {
         this.geometries = geometries;
         return this;
     }
 
+    /**
+     * Sets the lights in the scene.
+     *
+     * @param lights the lights to set
+     * @return the current Scene instance
+     */
     public Scene setLights(List<LightSource> lights) {
         this.lights = lights;
         return this;

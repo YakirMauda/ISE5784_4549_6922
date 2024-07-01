@@ -61,6 +61,11 @@ public class Ray {
         return direction;
     }
 
+    /**
+     * Returns the starting point of the ray.
+     *
+     * @return The starting point of the ray.
+     */
     public Point getHead() {
         return head;
     }
@@ -81,7 +86,13 @@ public class Ray {
     }
 
 
-
+    /**
+     * Finds the closest Point to the ray's head from a list of points.
+     * If the list is empty or null, returns null.
+     *
+     * @param points The list of points to search through.
+     * @return The closest point to the ray's head, or null if the list is empty or null.
+     */
     public Point findClosestPoint(List<Point> points) {
         return points == null || points.isEmpty() ? null
                 : findClosestGeoPoint(points.stream()
@@ -90,27 +101,28 @@ public class Ray {
     }
 
     /**
-     * Finds the closest point to the ray's head from a list of points.
+     * Finds the closest GeoPoint to the ray's head from a list of GeoPoints.
      * If the list is empty or null, returns null.
      *
-     * @param lst The list of points to search through.
-     * @return The closest point to the ray's head, or null if the list is empty or null.
+     * @param geoPoints The list of GeoPoints to search through.
+     * @return The closest GeoPoint to the ray's head, or null if the list is empty or null.
      */
-    public GeoPoint findClosestGeoPoint(List<GeoPoint> lst) {
-        if (lst == null)
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> geoPoints) {
+        if (geoPoints == null || geoPoints.isEmpty()) {
             return null;
+        }
 
         GeoPoint closestPoint = null;
         double closestDistance = Double.POSITIVE_INFINITY;
 
-        for (GeoPoint geoPoint : lst) {
-            double distance = head.distanceSquared(geoPoint.point); //מקווה שעובד
+        for (GeoPoint geoPoint : geoPoints) {
+            double distance = head.distanceSquared(geoPoint.point);
             if (distance < closestDistance) {
                 closestPoint = geoPoint;
                 closestDistance = distance;
             }
         }
-
         return closestPoint;
     }
+
 }

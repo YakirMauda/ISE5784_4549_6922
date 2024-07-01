@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="Finish stage 5">
-      <change afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lighting/Light.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
+    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="finished up to page 3 excluding without 4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/AmbientLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" afterDir="false" />
     </list>
     <list id="1e5b6468-eec7-4bdd-80ea-2091f5835169" name="Changes by user" comment="Changes by user" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +79,7 @@
     &quot;JUnit.GeometriesTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.GeometriesTests.testFindIntersections.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.ImageWriterTests.ImageWriterTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LightsTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PlaneTests.testFindIntersections.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PointTest.add.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PointTest.distance.executor&quot;: &quot;Run&quot;,
@@ -174,18 +177,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageWriterTests.ImageWriterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LightsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="lighting.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTests" />
-      <option name="METHOD_NAME" value="ImageWriterTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="lighting" />
+      <option name="MAIN_CLASS_NAME" value="lighting.LightsTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -224,10 +226,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in ISE5784_4549_6922" />
+        <item itemvalue="JUnit.LightsTests" />
         <item itemvalue="JUnit.RenderTests" />
         <item itemvalue="JUnit.CameraTest.testConstructRay" />
         <item itemvalue="JUnit.RayTests.findClosestPoint" />
-        <item itemvalue="JUnit.ImageWriterTests.ImageWriterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -268,7 +270,10 @@
       <workItem from="1717313200382" duration="690000" />
       <workItem from="1717313966312" duration="1801000" />
       <workItem from="1717763940618" duration="3849000" />
-      <workItem from="1719692483391" duration="2252000" />
+      <workItem from="1719692483391" duration="2332000" />
+      <workItem from="1719751622463" duration="3184000" />
+      <workItem from="1719830565377" duration="5305000" />
+      <workItem from="1719839036724" duration="346000" />
     </task>
     <task id="LOCAL‎-00001" summary="My first commit :)">
       <option name="closed" value="true" />
@@ -390,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718544844479</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL‎-00016" summary="finished up to page 3 excluding without 4">
+      <option name="closed" value="true" />
+      <created>1719695079747</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL‎-00016" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1719695079747</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +449,8 @@
     <MESSAGE value="add CameraTests.&#10;fix few things in Camera.&#10;start and finish CameraRayIntersectionsIntegrationTests." />
     <MESSAGE value="Finish test in ImageWriterTests.&#10;Create AmbientLight &amp; Scene." />
     <MESSAGE value="Add directory &quot;images&quot; into gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add directory &quot;images&quot; into gitignore" />
+    <MESSAGE value="finished up to page 3 excluding without 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished up to page 3 excluding without 4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
