@@ -115,8 +115,8 @@ public class Camera implements Cloneable {
      *
      * @param nX number of pixels in the X direction
      * @param nY number of pixels in the Y direction
-     * @param j  pixel column index
-     * @param i  pixel row index
+     * @param j  pixel row index
+     * @param i  pixel column index
      * @return the constructed ray
      */
     public Ray constructRay(int nX, int nY, int j, int i) {

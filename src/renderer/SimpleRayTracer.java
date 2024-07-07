@@ -12,6 +12,8 @@ import static primitives.Util.alignZero;
  */
 public class SimpleRayTracer extends RayTracerBase {
 
+    private static final double DELTA = 0.1;
+
     /**
      * Constructs a SimpleRayTracer with the specified scene.
      *
@@ -93,4 +95,6 @@ public class SimpleRayTracer extends RayTracerBase {
         double vr = alignZero(v.dotProduct(r.scale(-1)));
         return mat.kS.scale(Math.pow(vr, mat.nShininess));
     }
+
+
 }

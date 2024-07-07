@@ -53,7 +53,7 @@ public class Plane extends Geometry {
 
     @Override
     public Vector getNormal(Point point) {
-        return normal; }
+        return getNormal(); }
 
     @Override
     protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) {
