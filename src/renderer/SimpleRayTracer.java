@@ -5,6 +5,8 @@ import lighting.LightSource;
 import primitives.*;
 import scene.*;
 
+import java.util.List;
+
 import static primitives.Util.alignZero;
 
 /**
@@ -96,5 +98,29 @@ public class SimpleRayTracer extends RayTracerBase {
         return mat.kS.scale(Math.pow(vr, mat.nShininess));
     }
 
+    private boolean unshaded(GeoPoint gp, Vector l, Vector n, double nl) {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Vector epsVector = n.scale(nl < 0 ? DELTA : -DELTA);
+        Point point = gp.point.add(epsVector);
+        Ray lightRay = new Ray(point, lightDirection);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
+        return intersections == null;
+    }
 
+    private boolean unshaded(GeoPoint gp, LightSource light,
+                             Vector l, Vector n, double nl) {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Vector epsVector = n.scale(nl < 0 ? DELTA : -DELTA);
+        Point point = gp.point.add(epsVector);
+        Ray ray = new Ray(point, lightDirection);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
+        if (intersections == null) return true;
+
+
+
+        //if there are points in the intersections list that are closer to the
+        //point than light source – return false
+        //otherwise – return true
+        double lightDistance = light.getDistance(gp.point);
+    }
 }
