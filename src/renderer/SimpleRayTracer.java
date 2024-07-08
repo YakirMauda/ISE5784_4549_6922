@@ -61,7 +61,7 @@ public class SimpleRayTracer extends RayTracerBase {
         for (LightSource lightSource : scene.lights) {
             Vector l = lightSource.getL(gp.point);
             double nl = alignZero(n.dotProduct(l));
-            if (nl * nv > 0) { // sign(nl) == sign(nv)
+            if ((nl * nv > 0 && unshaded(gp, lightSource, l, n ,nl))) { // sign(nl) == sign(nv)
                 Color iL = lightSource.getIntensity(gp.point);
                 color = color.add(
                         iL.scale(calcDiffusive(material, nl)
@@ -98,29 +98,18 @@ public class SimpleRayTracer extends RayTracerBase {
         return mat.kS.scale(Math.pow(vr, mat.nShininess));
     }
 
-    private boolean unshaded(GeoPoint gp, Vector l, Vector n, double nl) {
+    private boolean unshaded(GeoPoint gp, LightSource light, Vector l, Vector n, double nl) {
         Vector lightDirection = l.scale(-1); // from point to light source
         Vector epsVector = n.scale(nl < 0 ? DELTA : -DELTA);
         Point point = gp.point.add(epsVector);
         Ray lightRay = new Ray(point, lightDirection);
-        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay, light.getDistance(gp.point));
         return intersections == null;
     }
-
-    private boolean unshaded(GeoPoint gp, LightSource light,
-                             Vector l, Vector n, double nl) {
-        Vector lightDirection = l.scale(-1); // from point to light source
-        Vector epsVector = n.scale(nl < 0 ? DELTA : -DELTA);
-        Point point = gp.point.add(epsVector);
-        Ray ray = new Ray(point, lightDirection);
-        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
-        if (intersections == null) return true;
-
-
 
         //if there are points in the intersections list that are closer to the
         //point than light source – return false
         //otherwise – return true
-        double lightDistance = light.getDistance(gp.point);
+        //double lightDistance = light.getDistance(gp.point);
     }
-}
+

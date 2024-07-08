@@ -72,7 +72,7 @@ public class Plane extends Geometry {
 
         //if the ray is the opposite direction to the normal
         t = alignZero(normal.dotProduct(q.subtract(p0))/ t);
-        if(t <= 0)
+        if(t <= 0 || alignZero(t - maxDistance) > 0)
             return null;
 
 

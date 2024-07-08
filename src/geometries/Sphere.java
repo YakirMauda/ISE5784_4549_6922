@@ -63,19 +63,19 @@ public class Sphere extends RadialGeometry {
         double t2 = alignZero(tm - th);
 
         // Both intersection points are in front of the ray's origin
-        if (t1 > 0 && t2 > 0) {
+        if (t1 > 0 && t2 > 0 && alignZero(t1 - maxDistance) <= 0 && alignZero(t2 - maxDistance) <= 0) {
             return List.of(
                     new GeoPoint(this,ray.getPoint(t1)),
                     new GeoPoint(this,ray.getPoint(t2)));
         }
 
         // Only the first intersection point is in front of the ray's origin
-        if (t1 > 0) {
+        if (t1 > 0 && alignZero(t1 - maxDistance) <= 0) {
             return List.of(new GeoPoint(this,ray.getPoint(t1)));
         }
 
         // Only the second intersection point is in front of the ray's origin
-        if (t2 > 0) {
+        if (t2 > 0 && alignZero(t2 - maxDistance) <= 0) {
             return List.of(new GeoPoint(this,ray.getPoint(t2)));
         }
 

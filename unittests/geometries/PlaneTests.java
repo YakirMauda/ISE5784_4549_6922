@@ -103,4 +103,18 @@ class PlaneTests {
         ray = new Ray(p001, new Vector(1, 1, 1));
         assertNull(pl.findIntersections(ray), "Ray is neither orthogonal nor parallel to the plane and starts after the plane");
     }
+
+    @Test
+    public void testMaxDistance() {
+        Plane pl = new Plane(p100, new Point(2, 0, 0), new Point(1, 1, 0));
+
+        // =============== Equivalence Partitions Tests ==============
+        // TC01: The distance is 0
+        Ray ray = new Ray(new Point(0,0,-1), new Vector(1, 1, 1));
+        assertNull(pl.findGeoIntersections(ray, 0), "The max distance is wrong");
+
+        // TC02: The distance is greater than 0
+        ray = new Ray(new Point(0,0,-1), new Vector(1, 1, 1));
+        assertEquals(1, pl.findGeoIntersections(ray, 10).size(), "The max distance is wrong");
+    }
 }

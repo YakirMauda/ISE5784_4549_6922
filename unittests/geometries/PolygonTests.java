@@ -165,4 +165,8 @@ public class PolygonTests {
         assertNull(pol.findIntersections(ray), "Invalid intersection");
     }
 
+    @Test
+    public void testMaxDistance() {
+
+    }
 }

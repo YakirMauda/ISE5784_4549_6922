@@ -31,9 +31,9 @@ public abstract class Intersectable {
 
         @Override
         public boolean equals(Object object) {
-            if (this == object) return true;
-            if (!(object instanceof GeoPoint geoPoint)) return false;
-            return geometry.equals(geoPoint.geometry) && point.equals(geoPoint.point);
+            if (this == object) return true;    // Check if the objects are the same object in memory.
+            if (!(object instanceof GeoPoint geoPoint)) return false;   // Check if the object is of the correct type.
+            return geometry.equals(geoPoint.geometry) && point.equals(geoPoint.point);  // Check if the two fields are equal.
         }
 
         @Override
@@ -64,11 +64,11 @@ public abstract class Intersectable {
      * Finds the intersections between a given ray and the object implementing this interface within a specified distance.
      *
      * @param ray the ray to intersect with the object
-     * @param distance the maximum distance for intersections
+     * @param maxDistance the maximum distance for intersections
      * @return a list of GeoPoints where the ray intersects the object within the specified distance, or null if there are no intersections
      */
-    public final List<GeoPoint> findGeoIntersections(Ray ray, double distance) {
-        return findGeoIntersectionsHelper(ray, distance);
+    public final List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+        return findGeoIntersectionsHelper(ray, maxDistance);
     }
 
     /**
@@ -76,10 +76,10 @@ public abstract class Intersectable {
      * This method must be implemented by subclasses.
      *
      * @param ray the ray to intersect with the object
-     * @param distance the maximum distance for intersections
+     * @param maxDistance the maximum distance for intersections
      * @return a list of GeoPoints where the ray intersects the object within the specified distance, or null if there are no intersections
      */
-    protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double distance);
+    protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance);
 
     /**
      * Finds the intersection points between a given ray and the object implementing this interface.
@@ -96,4 +96,5 @@ public abstract class Intersectable {
                 .map(gp -> gp.point)
                 .toList();
     }
+
 }

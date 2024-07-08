@@ -140,4 +140,9 @@ class SphereTests {
         assertNull(sphere.findIntersections(new Ray(p210, v310)), "Sphere behind Ray");
 
     }
+
+    @Test
+    public void testMaxDistance() {
+
+    }
 }

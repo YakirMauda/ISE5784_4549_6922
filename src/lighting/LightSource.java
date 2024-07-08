@@ -10,6 +10,15 @@ import primitives.*;
 public interface LightSource {
 
     /**
+     * Gets the distance from the light source to the specified point.
+     *
+     * @param point the point to which the distance is to be calculated
+     * @return the distance from the light source to the specified point
+     */
+    double getDistance(Point point);
+
+
+    /**
      * Gets the color intensity of the light at the specified point.
      *
      * @param p the point at which the light intensity is to be calculated
@@ -24,4 +33,6 @@ public interface LightSource {
      * @return the direction of the light from the specified point
      */
     public Vector getL(Point p);
+
+
 }

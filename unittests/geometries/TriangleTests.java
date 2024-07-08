@@ -77,4 +77,11 @@ class TriangleTests {
         assertEquals(List.of(new Point(-0.5, -0.5, 2)), plg.findIntersections(ray), "Wrong intersection with plane - against vertex");
         assertNull(tr.findIntersections(ray), "Bad intersection");
     }
-}
+
+
+
+    @Test
+    public void testMaxDistance() {
+
+    }
+    }
