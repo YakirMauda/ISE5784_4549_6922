@@ -167,6 +167,16 @@ public class PolygonTests {
 
     @Test
     public void testMaxDistance() {
+        Polygon pol = new Polygon(new Point(0, 0, 1), new Point(2, 0, 1), new Point(2, 2, 1), new Point(0, 2, 1));
+        Plane pl = new Plane(new Point(0, 0, 1), new Point(1, 0, 1), new Point(0, 1, 1));
+        Ray ray;
 
+        // =============== Equivalence Partitions Tests ==============
+        // TC01: The distance is 0
+        ray = new Ray(new Point(1, 1, 0), new Vector(0, 0, 1));
+        assertNull(pol.findGeoIntersections(ray, 0), "The max distance is wrong");
+
+        // TC02: The distance is greater than 0
+        assertEquals(1, pol.findGeoIntersections(ray, 10).size(), "The max distance is wrong");
     }
 }

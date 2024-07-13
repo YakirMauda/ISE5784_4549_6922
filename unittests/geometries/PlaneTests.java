@@ -114,7 +114,6 @@ class PlaneTests {
         assertNull(pl.findGeoIntersections(ray, 0), "The max distance is wrong");
 
         // TC02: The distance is greater than 0
-        ray = new Ray(new Point(0,0,-1), new Vector(1, 1, 1));
         assertEquals(1, pl.findGeoIntersections(ray, 10).size(), "The max distance is wrong");
     }
 }

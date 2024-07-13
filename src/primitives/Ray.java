@@ -15,11 +15,8 @@ import static primitives.Util.isZero;
  */
 public class Ray {
 
-
-    /** The starting point of the ray. */
+    private static final double DELTA = 0.1;
     final private Point head;
-
-    /** The direction vector of the ray. */
     final private Vector direction;
 
     /**
@@ -35,6 +32,16 @@ public class Ray {
             throw new NullPointerException("Point and vector must not be null");
         }
         head = point;
+        direction = vector.normalize();
+    }
+
+    public Ray(Point point, Vector vector, Vector normal) {
+        double nv = normal.dotProduct(vector);
+        if (!isZero(nv)) {
+            head = point.add(normal.scale(nv > 0 ? DELTA : -DELTA));
+        }else
+            head = point;
+
         direction = vector.normalize();
     }
 

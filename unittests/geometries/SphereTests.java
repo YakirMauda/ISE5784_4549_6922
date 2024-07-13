@@ -144,5 +144,19 @@ class SphereTests {
     @Test
     public void testMaxDistance() {
 
+        Sphere sphere = new Sphere(p100, 1d);
+
+        final Point p1M10 = new Point(1, -1, 0);
+        final Point p200 = new Point(2, 0, 0);
+        final Vector v110 = new Vector(1, 1, 0);
+
+        Ray ray = new Ray(p1M10, v110);
+
+        // =============== Equivalence Partitions Tests ==============
+        // TC01: The distance is 0
+        assertNull(sphere.findGeoIntersections(ray, 0), "The max distance is wrong");
+
+        // TC02: The distance is greater than 0
+        assertEquals(1, sphere.findGeoIntersections(ray, 10).size(), "The max distance is wrong");
     }
 }

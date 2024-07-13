@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="update comments">
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/ShadowTests.java" afterDir="false" />
+    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="finished the first part of stage 7">
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/snookerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Double3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Double3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/geometries/PolygonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PolygonTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <list id="1e5b6468-eec7-4bdd-80ea-2091f5835169" name="Changes by user" comment="Changes by user" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,20 +95,25 @@
     &quot;JUnit.PolygonTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PolygonTests.findIntersections.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PolygonTests.testConstructor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PolygonTests.testMaxDistance.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.RayTest.testEquals.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.RayTests.findClosestPoint.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.RayTests.testGetPoint.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReflectionRefractionTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.RenderTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SphereTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SphereTests.findIntersections.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SphereTests.testFindIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SphereTests.testMaxDistance.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TriangleTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TriangleTests.testFindIntersectionsRay.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TriangleTests.testMaxDistance.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TubeTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TubeTests.testGetNormal.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTests.add.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTests.testEquals.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.snookerTest.executor&quot;: &quot;Run&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
@@ -159,7 +161,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ISE5784_4549_6922">
+  <component name="RunManager" selected="JUnit.snookerTest">
     <configuration name="All in ISE5784_4549_6922" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <option name="PACKAGE_NAME" value="" />
@@ -168,54 +170,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CameraTest.testConstructRay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PolygonTests.testMaxDistance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.CameraTest" />
-      <option name="METHOD_NAME" value="testConstructRay" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.PolygonTests" />
+      <option name="METHOD_NAME" value="testMaxDistance" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageWriterTests.ImageWriterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SphereTests.testMaxDistance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTests" />
-      <option name="METHOD_NAME" value="ImageWriterTest" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.SphereTests" />
+      <option name="METHOD_NAME" value="testMaxDistance" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LightsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TriangleTests.testMaxDistance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="lighting.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="lighting" />
-      <option name="MAIN_CLASS_NAME" value="lighting.LightsTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTests" />
+      <option name="METHOD_NAME" value="testMaxDistance" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RenderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="snookerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_4549_6922" />
       <extension name="coverage">
         <pattern>
@@ -224,7 +227,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
+      <option name="MAIN_CLASS_NAME" value="renderer.snookerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -232,11 +235,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.snookerTest" />
+        <item itemvalue="JUnit.SphereTests.testMaxDistance" />
+        <item itemvalue="JUnit.TriangleTests.testMaxDistance" />
+        <item itemvalue="JUnit.PolygonTests.testMaxDistance" />
         <item itemvalue="JUnit.All in ISE5784_4549_6922" />
-        <item itemvalue="JUnit.ImageWriterTests.ImageWriterTest" />
-        <item itemvalue="JUnit.LightsTests" />
-        <item itemvalue="JUnit.RenderTests" />
-        <item itemvalue="JUnit.CameraTest.testConstructRay" />
       </list>
     </recent_temporary>
   </component>
@@ -285,7 +288,9 @@
       <workItem from="1720294332094" duration="299000" />
       <workItem from="1720294760202" duration="4687000" />
       <workItem from="1720358385978" duration="9705000" />
-      <workItem from="1720467671295" duration="6594000" />
+      <workItem from="1720467671295" duration="17547000" />
+      <workItem from="1720695746607" duration="573000" />
+      <workItem from="1720899802469" duration="1197000" />
     </task>
     <task id="LOCAL‎-00001" summary="My first commit :)">
       <option name="closed" value="true" />
@@ -431,7 +436,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1720358096346</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL‎-00019" summary="finished the first part of stage 7">
+      <option name="closed" value="true" />
+      <created>1720474434516</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL‎-00019" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1720474434516</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,7 +493,8 @@
     <MESSAGE value="finished up to page 3 excluding without 4" />
     <MESSAGE value="Finish stage 6 :)" />
     <MESSAGE value="update comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="update comments" />
+    <MESSAGE value="finished the first part of stage 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished the first part of stage 7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
