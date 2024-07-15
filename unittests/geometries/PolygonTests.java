@@ -40,10 +40,10 @@ public class PolygonTests {
         // TC02: Wrong vertices order
         assertThrows(IllegalArgumentException.class, //
                 () -> new Polygon(
-                            new Point(0, 0, 1),
-                            new Point(0, 1, 0),
-                            new Point(1, 0, 0),
-                            new Point(-1, 1, 1)), //
+                        new Point(0, 0, 1),
+                        new Point(0, 1, 0),
+                        new Point(1, 0, 0),
+                        new Point(-1, 1, 1)), //
                 "Constructed a polygon with wrong order of vertices");
 
         // TC03: Not in the same plane
@@ -165,6 +165,9 @@ public class PolygonTests {
         assertNull(pol.findIntersections(ray), "Invalid intersection");
     }
 
+    /**
+     * Test method for checking the max distance for intersections in the {@link geometries.Polygon} class.
+     */
     @Test
     public void testMaxDistance() {
         Polygon pol = new Polygon(new Point(0, 0, 1), new Point(2, 0, 1), new Point(2, 2, 1), new Point(0, 2, 1));

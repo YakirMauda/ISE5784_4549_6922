@@ -141,6 +141,11 @@ class SphereTests {
 
     }
 
+
+    /**
+     * Test method for {@link geometries.Sphere#findGeoIntersections(Ray, double)}.
+     * Tests the findGeoIntersections method of the Sphere class with maximum distance.
+     */
     @Test
     public void testMaxDistance() {
 

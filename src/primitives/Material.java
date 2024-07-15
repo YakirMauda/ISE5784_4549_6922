@@ -3,7 +3,7 @@ package primitives;
 /**
  * Represents the material properties of a geometric object.
  * The material properties include diffuse reflection (kD), specular reflection (kS),
- * and shininess (nShininess).
+ * transmission coefficient (kT), reflection coefficient (kR), and shininess (nShininess).
  */
 public class Material {
 
@@ -13,27 +13,49 @@ public class Material {
     public Double3 kR = Double3.ZERO;
     public int nShininess = 0;
 
+    /**
+     * Sets the reflection coefficient using a {@link Double3} object.
+     *
+     * @param kR the reflection coefficient
+     * @return the current Material object (for chaining method calls)
+     */
     public Material setkR(Double3 kR) {
         this.kR = kR;
         return this;
     }
 
+    /**
+     * Sets the transmission coefficient using a {@link Double3} object.
+     *
+     * @param kT the transmission coefficient
+     * @return the current Material object (for chaining method calls)
+     */
     public Material setkT(Double3 kT) {
         this.kT = kT;
         return this;
     }
 
-
+    /**
+     * Sets the reflection coefficient using a double value.
+     *
+     * @param kR the reflection coefficient
+     * @return the current Material object (for chaining method calls)
+     */
     public Material setkR(Double kR) {
         this.kR = new Double3(kR);
         return this;
     }
 
+    /**
+     * Sets the transmission coefficient using a double value.
+     *
+     * @param kT the transmission coefficient
+     * @return the current Material object (for chaining method calls)
+     */
     public Material setkT(Double kT) {
         this.kT = new Double3(kT);
         return this;
     }
-
 
     /**
      * Sets the diffuse reflection coefficient using a {@link Double3} object.
@@ -45,7 +67,6 @@ public class Material {
         this.kD = kD;
         return this;
     }
-
 
     /**
      * Sets the diffuse reflection coefficient using a double value.

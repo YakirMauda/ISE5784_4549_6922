@@ -14,18 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class TriangleTests {
 
-    /** Delta value for accuracy when comparing the numbers of type 'double' in assertEquals */
     private final double DELTA = 0.000001;
-
-    /** Points for testing */
     private final Point p001 = new Point(0, 0, 1);
     private final Point p010 = new Point(0, 1, 0);
     private final Point p100 = new Point(1, 0, 0);
-
-    /** A triangle used in some tests */
     private final Triangle tr    = new Triangle(p001, p100, p010);
-
-    /** Triangle instance for testing */
     private final Plane plg = new Plane(p001, p100, p010);
 
     /**
@@ -42,8 +35,10 @@ class TriangleTests {
         assertEquals(0, p001.subtract(p100).dotProduct(n), DELTA, "Normal isn't orthogonal to triangle");
     }
 
-    /** Test method for
-     * {@link geometries.Triangle#findIntersections(primitives.Ray)}. */
+    /**
+     * Test method for {@link geometries.Triangle#findIntersections(Ray)}.
+     * Tests the findIntersections method of the Triangle class.
+     */
     @Test
     public void testFindIntersectionsRay() {
         // =============== Boundary Values Tests ==================
@@ -79,7 +74,10 @@ class TriangleTests {
     }
 
 
-
+    /**
+     * Test method for {@link geometries.Triangle#findGeoIntersections(Ray, double)}.
+     * Tests the findGeoIntersections method of the Triangle class with maximum distance.
+     */
     @Test
     public void testMaxDistance() {
         Polygon pol = new Polygon(new Point(0, 0, 1), new Point(2, 0, 1), new Point(2, 2, 1), new Point(0, 2, 1));
@@ -94,4 +92,4 @@ class TriangleTests {
         // TC02: The distance is greater than 0
         assertEquals(1, plg.findGeoIntersections(ray, 10).size(), "The max distance is wrong");
     }
-    }
+}

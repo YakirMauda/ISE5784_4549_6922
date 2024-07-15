@@ -768,18 +768,14 @@ public class snookerTest {
                         .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.3).setkR(0.0))
                         .setEmission(new Color(128, 128, 128)), // Grey
 
-                new Plane(new Point(0, 0, -15), new Vector(0, 0, 1))
-                        .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.0).setkR(0.0))
-                        .setEmission(new Color(100, 100, 100)),
-
-                new Polygon(new Point(0, 10, 32.5),
+                new Polygon(new Point(0, 10, 32.5),     //the stick
                         new Point(15, 10, 12.5),
                         new Point(15, 10.5, 12.5),
                         new Point(0, 10.5, 32.5))
                         .setEmission(new Color(128, 64, 0))
                         .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.7).setkR(0.0)),
 
-                new Polygon(new Point(-60, -40, 10),
+                new Polygon(new Point(-60, -40, 10),    //the mirror
                         new Point(-60, -40, 40),
                         new Point(-75, -10, 40),
                         new Point(-75, -10, 10))
@@ -787,42 +783,24 @@ public class snookerTest {
                         .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.0).setkR(1d))
         );
 
+        // adding lights
         scene.lights.add(new PointLight(new Color(100, 200, 100), new Point(-60, 0, 60))
                 .setKl(0.00001).setKq(0.000001));
 
-//        // מקור אור נקודתי ראשון
-//        scene.lights.add(new PointLight(new Color(100, 200, 100), new Point(0, 0, 100))
-//                .setKl(0.00001).setKq(0.000001));
-//
-//// מקור אור שני מנוגד
-//        scene.lights.add(new SpotLight(new Color(200, 100, 100), new Point(-50, -50, 100), new Vector(1, 1, -1))
-//                .setKl(0.00001).setKq(0.000001));
-
-// מקור אור שלישי נוסף
         scene.lights.add(new SpotLight(new Color(100, 100, 200), new Point(50, 50, 100), new Vector(-1, -1, -1))
                 .setKl(0.00001).setKq(0.000001));
 
-// מקור אור רביעי ממיקום גבוה יותר
         scene.lights.add(new PointLight(new Color(200, 200, 100), new Point(0, 0, 200))
                 .setKl(0.00001).setKq(0.000001));
-//
-//// מקור אור חמישי ליצור צל גדול יותר
-//        scene.lights.add(new SpotLight(new Color(150, 150, 150), new Point(100, -100, 50), new Vector(-1, 1, -0.5))
-//                .setKl(0.00001).setKq(0.000001).setNarrowBeam(10));
-//
-//// מקור אור שישי ליצור צללים נוספים
-//        scene.lights.add(new SpotLight(new Color(150, 150, 150), new Point(-100, 100, 50), new Vector(1, -1, -0.5))
-//                .setKl(0.00001).setKq(0.000001).setNarrowBeam(10));
-//
-//
-        scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), 0.1))
-               .setBackground(new Color(75, 127, 90));
 
+        scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), 0.1))
+               .setBackground(new Color(100, 100, 100));
+
+        // Render the scene
         camera.setImageWriter(new ImageWriter("snooker test", 1000, 1000))
                 .build()
                 .renderImage()
                 .writeToImage();
 
     }
-
 }
