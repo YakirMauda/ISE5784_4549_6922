@@ -169,7 +169,20 @@ public class Camera implements Cloneable {
                 throw new IllegalArgumentException("vTo and vUp are not orthogonal to each other");
             camera.vTo = vTo.normalize();
             camera.vUp = vUp.normalize();
-            camera.vRight = camera.vTo.crossProduct(camera.vUp);
+            camera.vRight = camera.vTo.crossProduct(camera.vUp).normalize();
+            return this;
+        }
+
+        public Builder setDirection(Point p, Vector vUp) {
+            if(p == null || vUp == null)
+                throw new IllegalArgumentException("Camera position and up vector cannot be null");
+
+            if (vUp.equals(Vector.ZERO))
+                throw new IllegalArgumentException("Camera up vector cannot be the zero vector");
+
+            camera.vTo = p.subtract(camera.position).normalize();
+            camera.vRight = camera.vTo.crossProduct(vUp).normalize();
+            camera.vUp = camera.vRight.crossProduct(camera.vTo).normalize();
             return this;
         }
 

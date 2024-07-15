@@ -98,59 +98,42 @@ public class RenderTests {
                 .printGrid(100, new Color(YELLOW))
                 .writeToImage();
     }
-}
 
-//   @Test
-//   public void tenImagesTest() {
-//      Scene scene = new Scene("Test scene");
-//      scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), 0.1));
-//
-//      // Adding various geometries
-//      scene.geometries.add(
-//              new Sphere(new Point(0, 0, -100), 50) //
-//                      .setEmission(new Color(java.awt.Color.BLUE)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Triangle(new Point(100, 0, -100), new Point(0, 100, -100), new Point(100, 100, -100)) //
-//                      .setEmission(new Color(java.awt.Color.GREEN)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Plane(new Point(0, 0, -150), new Point(0, 1, -150), new Point(1, 0, -150)) //
-//                      .setEmission(new Color(java.awt.Color.RED)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Cylinder(new Ray(new Point(-50, -50, -100), new Vector(1, 1, 0)), 20, 50) //
-//                      .setEmission(new Color(java.awt.Color.YELLOW)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Polygon(new Point(0, 0, -100), new Point(50, 0, -100), new Point(50, 50, -100), new Point(0, 50, -100)) //
-//                      .setEmission(new Color(java.awt.Color.ORANGE)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Tube(new Ray(new Point(50, 50, -100), new Vector(0, 1, 0)), 10) //
-//                      .setEmission(new Color(java.awt.Color.PINK)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Sphere(new Point(50, 0, -100), 25) //
-//                      .setEmission(new Color(java.awt.Color.MAGENTA)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Triangle(new Point(-100, 0, -100), new Point(0, -100, -100), new Point(-100, -100, -100)) //
-//                      .setEmission(new Color(java.awt.Color.CYAN)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Plane(new Point(0, -100, -200), new Point(100, -100, -200), new Point(50, -50, -200)) //
-//                      .setEmission(new Color(java.awt.Color.LIGHT_GRAY)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100)),
-//              new Cylinder(new Ray(new Point(100, 100, -100), new Vector(1, 0, 0)), 30, 70) //
-//                      .setEmission(new Color(java.awt.Color.DARK_GRAY)) //
-//                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100))
-//      );
-//
-//      // Adding lights
-//      scene.lights.add(new SpotLight(new Color(700, 400, 400), new Point(40, 40, 115), new Vector(-1, -1, -4)) //
-//              .setKl(0.0004).setKq(0.0000006));
-//
-//      Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
-//              .setViewPlaneSize(200, 200).setDistance(1000);
-//
-//      ImageWriter imageWriter = new ImageWriter("scene", 500, 500);
-//      camera.setImageWriter(imageWriter) //
-//              .setRayTracer(new SimpleRayTracer(scene)) //
-//              .renderImage() //
-//              .writeToImage();
-//
-//   }
-//}
+    /**
+     * Test for multiple images from XML - for bonus
+     */
+    @Test
+    public void tenImagesTest() {
+        Geometry polygon = new Polygon(
+                new Point(328.19696, 188.54953, 85.362366),
+                new Point(310.241852, 206.504669, 85.362366),
+                new Point(-310.241852, 206.504669, 85.362366),
+                new Point(-328.19696, 188.54953, 85.362366)
+        ).setMaterial(new Material().setKd(0.588235).setKs(0.0).setShininess(141421378).setkT(0.0).setkR(1.0)
+        ).setEmission(new Color(0, 0, 0));
+
+        Geometry triangle = new Polygon(
+                new Point(-317.676971, -224.454666, 0.0),
+                new Point(317.676971, -224.454666, 0.0),
+                new Point(317.676971, -224.454666, 102.76236),
+                new Point(-317.676971, -224.454666, 102.76236)
+        ).setMaterial(new Material().setKd(0.588235).setKs(0.0).setShininess(141421378).setkT(0.0).setkR(1.0)
+        ).setEmission(new Color(0, 0, 0));
+
+        Geometry sphere = new Polygon(
+                new Point(346.146973, -195.984665, 0.0),
+                new Point(346.146973, 195.984665, 0.0),
+                new Point(346.146973, 195.984665, 102.76236),
+                new Point(346.146973, -195.984665, 102.76236)
+        ).setMaterial(new Material().setKd(0.588235).setKs(0.0).setShininess(141421378).setkT(0.0).setkR(1.0)
+        ).setEmission(new Color(0, 0, 0));
+
+        Geometry plane = new Polygon(
+                new Point(317.676971, 224.454666, 0.0),
+                new Point(-317.676971, 224.454666, 0.0),
+                new Point(-317.676971, 224.454666, 102.76236),
+                new Point(317.676971, 224.454666, 102.76236)
+        ).setMaterial(new Material().setKd(0.588235).setKs(0.0).setShininess(141421378).setkT(0.0).setkR(1.0)
+        ).setEmission(new Color(0, 0, 0));
+    }
+}
