@@ -1,7 +1,10 @@
 package renderer;
 
 import primitives.*;
+import renderer.Pixel;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.MissingResourceException;
 
 import static primitives.Util.alignZero;
@@ -40,6 +43,13 @@ public class Camera implements Cloneable {
 
     /** The ray tracer used for tracing rays */
     private RayTracerBase rayTracer;
+
+    /** The number of samples for super sampling */
+    int numSamples = 1;
+
+    private int threadsCount = 0; // -2 auto, -1 range/stream, 0 no threads, 1+ number of threads
+    private final int SPARE_THREADS = 2; // Spare threads if trying to use all the cores
+    private double printInterval = 0; // printing progress percentage interval
 
     /**
      * Private constructor to prevent direct instantiation.
@@ -110,16 +120,7 @@ public class Camera implements Cloneable {
         return viewPlaneWidth;
     }
 
-    /**
-     * Constructs a ray through the view plane from the camera's position.
-     *
-     * @param nX number of pixels in the X direction
-     * @param nY number of pixels in the Y direction
-     * @param j  pixel row index
-     * @param i  pixel column index
-     * @return the constructed ray
-     */
-    public Ray constructRay(int nX, int nY, int j, int i) {
+    public Ray constructRay(int nX, int nY, double j, double i) {
         Point pCenter = position.add(vTo.scale(viewPlaneDistance));
 
         double rX = viewPlaneWidth / nX;
@@ -237,6 +238,26 @@ public class Camera implements Cloneable {
         }
 
         /**
+         * Sets the number of samples for super sampling.
+         *
+         * @param numSamples the number of samples
+         * @return the builder instance
+         */
+        public Builder setNumSamples(int numSamples) {
+            if(numSamples < 1)
+                throw new IllegalArgumentException("Number of samples must be positive");
+            camera.numSamples = numSamples;
+            return this;
+        }
+
+        public Builder setThreadsCount(int threadsCount) {
+            if (threadsCount < -2)
+                throw new IllegalArgumentException("Threads count must be -2, -1, 0 or positive");
+            camera.threadsCount = threadsCount;
+            return this;
+        }
+
+        /**
          * Builds and returns the Camera instance.
          *
          * @return the constructed Camera instance
@@ -288,17 +309,38 @@ public class Camera implements Cloneable {
     }
 
     /**
-     * Renders the image by casting rays through each pixel of the view plane.
-     *
-     * @return the camera instance
+     * Render the image
      */
     public Camera renderImage() {
-        int nX = imageWriter.getNx();
-        int nY = imageWriter.getNy();
+        int ny = imageWriter.getNy();
+        int nx = imageWriter.getNx();
+        Pixel.initialize(ny, nx, printInterval);
 
-        for (int i = 0; i < nY; ++i)
-            for (int j = 0; j < nX; ++j)
-                castRay(nX, nY, j, i);
+        if (threadsCount == 0) {
+            for (int i = 0; i < ny; ++i)
+                for (int j = 0; j < nx; ++j)
+                    castRays(nx, ny, j, i);
+            return this;
+        }
+        List<Thread> threads = new LinkedList<>();
+        int availableProcessors = threadsCount == -1 ? Runtime.getRuntime().availableProcessors()
+                : threadsCount;
+
+        for (int t = 0; t < availableProcessors; t++) {
+            threads.add(new Thread(() -> {
+                Pixel pixel;
+                while ((pixel = Pixel.nextPixel()) != null)
+                    castRays(nx, ny, pixel.col(), pixel.row());
+                    pixel.pixelDone();
+            }));
+        }
+        for (var thread : threads)
+            thread.start();
+        try {
+            for (var thread : threads)
+                thread.join();
+        } catch (InterruptedException ignore) {
+        }
 
         return this;
     }
@@ -339,9 +381,22 @@ public class Camera implements Cloneable {
      * @param j  pixel column index
      * @param i  pixel row index
      */
-    private void castRay(int nX, int nY, int j, int i) {
-        Ray ray = constructRay(nX, nY, j, i);
-        Color color = rayTracer.traceRay(ray);
+    private void castRays(int nX, int nY, int j, int i) {
+        Color sum = new Color(0, 0, 0);
+
+        for (int k = 0; k < numSamples * numSamples; ++k) {
+            double x = j + (k % numSamples + (Math.random() - 0.5)) / (double) numSamples;
+            double y = i + (k / numSamples + (Math.random() - 0.5)) / (double) numSamples;
+
+
+            Ray ray = constructRay(nX, nY, x, y);
+            Color color = rayTracer.traceRay(ray);
+            sum = sum.add(color);
+        }
+
+        Color color = sum.scale(1d / (numSamples * numSamples));
+
         imageWriter.writePixel(j, i, color);
+        Pixel.pixelDone();
     }
 }
