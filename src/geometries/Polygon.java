@@ -52,6 +52,11 @@ public class Polygon extends Geometry {
      *                                  </ul>
      */
     public Polygon(Point... vertices) {
+
+        // calculate bounding box:
+
+        this.box = getBoundingBox(vertices);
+
         if (vertices.length < 3)
             throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
         this.vertices = List.of(vertices);
@@ -87,6 +92,32 @@ public class Polygon extends Geometry {
             if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))
                 throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
         }
+    }
+
+    private static BoundingBox getBoundingBox(Point[] vertices) {
+        // Initialize minimum and maximum values for each coordinate
+        double minX = Double.POSITIVE_INFINITY;
+        double minY = Double.POSITIVE_INFINITY;
+        double minZ = Double.POSITIVE_INFINITY;
+        double maxX = Double.NEGATIVE_INFINITY;
+        double maxY = Double.NEGATIVE_INFINITY;
+        double maxZ = Double.NEGATIVE_INFINITY;
+
+        // Iterate through each vertex to find the minimum and maximum coordinates
+        for (Point p : vertices) {
+            minX = Math.min(minX, p.getX());
+            minY = Math.min(minY, p.getY());
+            minZ = Math.min(minZ, p.getZ());
+            maxX = Math.max(maxX, p.getX());
+            maxY = Math.max(maxY, p.getY());
+            maxZ = Math.max(maxZ, p.getZ());
+        }
+
+        // Create a BoundingBox object using the calculated minimum and maximum points
+        return new BoundingBox(
+                new Point(minX, minY, minZ),
+                new Point(maxX, maxY, maxZ)
+        );
     }
 
     @Override

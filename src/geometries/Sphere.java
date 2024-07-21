@@ -82,9 +82,4 @@ public class Sphere extends RadialGeometry {
         // No intersection points are in front of the ray's origin
         return null;
     }
-
 }
-
-
-
-

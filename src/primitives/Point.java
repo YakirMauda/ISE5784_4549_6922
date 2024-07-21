@@ -95,4 +95,31 @@ public class Point {
         double dz = xyz.d3 - point.xyz.d3;
         return dx * dx + dy * dy + dz * dz;
     }
+
+    /**
+     * Returns the x-coordinate of the point.
+     *
+     * @return the x-coordinate of the point.
+     */
+    public double getX() {
+        return xyz.d1;
+    }
+
+    /**
+     * Returns the y-coordinate of the point.
+     *
+     * @return the y-coordinate of the point.
+     */
+    public double getY() {
+        return xyz.d2;
+    }
+
+    /**
+     * Returns the z-coordinate of the point.
+     *
+     * @return the z-coordinate of the point.
+     */
+    public double getZ() {
+        return xyz.d3;
+    }
 }

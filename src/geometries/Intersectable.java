@@ -12,6 +12,18 @@ import primitives.Ray;
 public abstract class Intersectable {
 
     /**
+     * The bounding box of the object.
+     */
+    protected BoundingBox box;
+
+    /**
+     * Constructs an Intersectable object with the specified bounding box.
+     */
+    public BoundingBox getBoundingBox() {
+        return box;
+    }
+
+    /**
      * Represents a point in three-dimensional space with its related geometry.
      */
     public static class GeoPoint {
@@ -57,6 +69,7 @@ public abstract class Intersectable {
      * @return a list of GeoPoints where the ray intersects the object, or null if there are no intersections
      */
     public final List<GeoPoint> findGeoIntersections(Ray ray) {
+        // Calls the helper method with an infinite maximum distance to find all intersections
         return findGeoIntersectionsHelper(ray, Double.POSITIVE_INFINITY);
     }
 
@@ -68,6 +81,11 @@ public abstract class Intersectable {
      * @return a list of GeoPoints where the ray intersects the object within the specified distance, or null if there are no intersections
      */
     public final List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+        // Checks if the object's bounding box exists and if the ray intersects with it
+        if (box != null && !box.hasIntersection(ray)) {
+            return null; // No intersections if the bounding box check fails
+        }
+        // Calls the helper method with the specified maximum distance to find intersections
         return findGeoIntersectionsHelper(ray, maxDistance);
     }
 
@@ -96,5 +114,4 @@ public abstract class Intersectable {
                 .map(gp -> gp.point)
                 .toList();
     }
-
 }

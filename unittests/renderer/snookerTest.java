@@ -26,7 +26,8 @@ public class snookerTest {
             .setVpDistance(500)
             .setVpSize(200, 200)
             .setNumSamples(9)
-           .setThreadsCount(3);
+            .setMultithreading(3); //
+            //.setDebugPrint(0.1); // progress update intervak in %
 
     /**
      * Produce a scene with basic 3D model and render it into a png image with a
@@ -787,6 +788,9 @@ public class snookerTest {
                         .setEmission(new Color(128, 128, 128))
                         .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.0).setkR(1d))
         );
+
+        // make it a BVH
+        scene.geometries.makeBVH();
 
         // adding lights
         scene.lights.add(new PointLight(new Color(100, 200, 100), new Point(-60, 0, 60))

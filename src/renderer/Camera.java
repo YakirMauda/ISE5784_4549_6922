@@ -250,12 +250,23 @@ public class Camera implements Cloneable {
             return this;
         }
 
-        public Builder setThreadsCount(int threadsCount) {
-            if (threadsCount < -2)
-                throw new IllegalArgumentException("Threads count must be -2, -1, 0 or positive");
-            camera.threadsCount = threadsCount;
+        public Builder setMultithreading(int threads) {
+            if (threads < -2)
+                throw new IllegalArgumentException("Multithreading must be -2 or higher");
+            if (threads >= -1)
+                camera.threadsCount = threads;
+            else { // == -2
+                int cores = Runtime.getRuntime().availableProcessors() - camera.SPARE_THREADS;
+                camera.threadsCount = cores <= 2 ? 1 : cores;
+            }
             return this;
         }
+
+        public Builder setDebugPrint(double interval) {
+            camera.printInterval = interval;
+            return this;
+        }
+
 
         /**
          * Builds and returns the Camera instance.
@@ -331,7 +342,6 @@ public class Camera implements Cloneable {
                 Pixel pixel;
                 while ((pixel = Pixel.nextPixel()) != null)
                     castRays(nx, ny, pixel.col(), pixel.row());
-                    pixel.pixelDone();
             }));
         }
         for (var thread : threads)

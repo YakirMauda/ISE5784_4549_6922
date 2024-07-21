@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="finished stage 7">
-      <change afterPath="$PROJECT_DIR$/src/renderer/pixel.java" afterDir="false" />
+    <list default="true" id="54cfa5ee-a03e-4533-9d78-b3b6d1aed9bc" name="Changes" comment="Add Multi Threading">
+      <change afterPath="$PROJECT_DIR$/src/geometries/BoundingBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/renderer/snookerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/snookerTest.java" afterDir="false" />
     </list>
@@ -137,6 +142,7 @@
       <recent name="C:\Users\user\IdeaProjects\ISE5784_4549_6922\src\primitives" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\ISE5784_4549_6922\src\geometries" />
       <recent name="C:\Users\user\IdeaProjects\ISE5784_4549_6922\unittests\renderer" />
       <recent name="C:\Users\User\IdeaProjects\ISE5784_4549_6922\unittests\renderer" />
       <recent name="C:\Users\user\IdeaProjects\ISE5784_4549_6922\unittests\geometries" />
@@ -445,7 +451,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721076646527</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Add Multi Threading">
+      <option name="closed" value="true" />
+      <created>1721510626879</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1721510626879</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +510,8 @@
     <MESSAGE value="update comments" />
     <MESSAGE value="finished the first part of stage 7" />
     <MESSAGE value="finished stage 7" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished stage 7" />
+    <MESSAGE value="Add Multi Threading" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Multi Threading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -33,6 +33,24 @@ public class Geometries extends Intersectable {
     }
 
     /**
+     * Constructor that initializes the Geometries collection with a list of Intersectable objects.
+     *
+     * @param geometries A list of Intersectable objects to be added to the collection.
+     */
+    public Geometries(List<Intersectable> geometries) {
+        add(geometries);
+    }
+
+    /**
+     * Adds a list of Intersectable objects to the Geometries collection.
+     *
+     * @param geometries A list of Intersectable objects to be added.
+     */
+    public void add(List<Intersectable> geometries) {
+        this.geometries.addAll(geometries);
+    }
+
+    /**
      * Adds one or more Intersectable objects to the Geometries collection.
      *
      * @param geometries Varargs of Intersectable objects to be added.
@@ -63,5 +81,15 @@ public class Geometries extends Intersectable {
         }
         // Return the list of all intersection points, or null if no intersections are found
         return intersections;
+    }
+
+    /**
+     * Creates a bounding volume hierarchy (BVH) for the geometries in the collection.
+     * This method optimizes the intersection tests by organizing the geometries into a hierarchical structure.
+     */
+    public void makeBVH() {
+        List<Intersectable> intersectables = BoundingBox.buildBVH(geometries);
+        geometries.clear();
+        geometries.addAll(intersectables);
     }
 }
