@@ -54,7 +54,6 @@ public class Polygon extends Geometry {
     public Polygon(Point... vertices) {
 
         // calculate bounding box:
-
         this.box = getBoundingBox(vertices);
 
         if (vertices.length < 3)

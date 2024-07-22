@@ -17,31 +17,14 @@ import static primitives.Util.isZero;
  */
 public class Camera implements Cloneable {
 
-    /** The position of the camera */
     private Point position;
-
-    /** The direction vector towards the view plane */
     private Vector vTo;
-
-    /** The upward direction vector */
     private Vector vUp;
-
-    /** The right direction vector */
     private Vector vRight;
-
-    /** The height of the view plane */
     private double viewPlaneHigh = 0.0;
-
-    /** The width of the view plane */
     private double viewPlaneWidth = 0.0;
-
-    /** The distance from the camera to the view plane */
     private double viewPlaneDistance = 0.0;
-
-    /** The image writer used for writing images */
     private ImageWriter imageWriter;
-
-    /** The ray tracer used for tracing rays */
     private RayTracerBase rayTracer;
 
     /** The number of samples for super sampling */
@@ -262,6 +245,12 @@ public class Camera implements Cloneable {
             return this;
         }
 
+        /**
+         * Sets the interval for debug printing.
+         *
+         * @param interval the interval at which to print the progress (as a percentage)
+         * @return the Builder instance for method chaining
+         */
         public Builder setDebugPrint(double interval) {
             camera.printInterval = interval;
             return this;
@@ -392,21 +381,32 @@ public class Camera implements Cloneable {
      * @param i  pixel row index
      */
     private void castRays(int nX, int nY, int j, int i) {
+        // Initialize the color sum to black.
         Color sum = new Color(0, 0, 0);
 
+        // Loop through each sample within the pixel.
         for (int k = 0; k < numSamples * numSamples; ++k) {
+            // Calculate the X and Y offsets for the current sample.
             double x = j + (k % numSamples + (Math.random() - 0.5)) / (double) numSamples;
             double y = i + (k / numSamples + (Math.random() - 0.5)) / (double) numSamples;
 
-
+            // Construct the ray for the current sample.
             Ray ray = constructRay(nX, nY, x, y);
+
+            // Trace the ray and get its color.
             Color color = rayTracer.traceRay(ray);
+
+            // Add the color to the sum.
             sum = sum.add(color);
         }
 
+        // Calculate the average color for the pixel by scaling the sum.
         Color color = sum.scale(1d / (numSamples * numSamples));
 
+        // Write the average color to the pixel in the image.
         imageWriter.writePixel(j, i, color);
+
+        // Mark the pixel as processed.
         Pixel.pixelDone();
     }
 }

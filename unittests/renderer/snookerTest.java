@@ -1,7 +1,5 @@
 package renderer;
 
-import static java.awt.Color.*;
-
 import org.junit.jupiter.api.Test;
 import geometries.*;
 import lighting.*;
@@ -730,9 +728,10 @@ public class snookerTest {
                         .setMaterial(material3)
                         .setEmission(color3),
 
-                new Sphere(new Point(-28.216283798217773 + 35, -10.6532992720603943, 14.5 + 4), 3)              // The white ball
+                new Sphere(new Point(-19.56353623657227, -0.1187283918261528, 14.5), 3)              // The white ball
                         .setMaterial(new Material().setKd(0.4).setKs(0.8).setShininess(30).setkR(0.6))
                         .setEmission(new Color(100, 100, 100)), // White
+
 
                 new Sphere(new Point(15.436763763427734, -0.1187283918261528, 14.5), 3)              // The red ball
                         .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.0).setkR(0.0))
@@ -774,20 +773,81 @@ public class snookerTest {
                         .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.3).setkR(0.0))
                         .setEmission(new Color(128, 128, 128)), // Grey
 
-                new Polygon(new Point(0, 10, 32.5),     //the stick
-                        new Point(15, 10, 12.5),
-                        new Point(15, 10.5, 12.5),
-                        new Point(0, 10.5, 32.5))
-                        .setEmission(new Color(128, 64, 0))
-                        .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.7).setkR(0.0)),
-
-                new Polygon(new Point(-60, -40, 10),    //the mirror
-                        new Point(-60, -40, 40),
-                        new Point(-75, -10, 40),
-                        new Point(-75, -10, 10))
+                // the mirror
+                new Polygon(new Point(7.5, -90, 6.5),  // bottom left
+                        new Point(8, -92, 36.5),  // top left
+                        new Point(-42, -74, 39.5),  // top right
+                        new Point(-42.5, -72, 9.5))    //bottom right
                         .setEmission(new Color(128, 128, 128))
-                        .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.0).setkR(1d))
+                        .setMaterial(new Material().setKd(0.0).setKs(0.0).setShininess(0).setkT(0.0).setkR(1d)),
+
+                new Polygon(new Point(100, -100, -15.100517272949219), // the floor
+                        new Point(100,100,-15.100517272949219),
+                        new Point(-100,100,-15.100517272949219),
+                        new Point(-100,-100,-15.100517272949219))
+                        .setMaterial(new Material().setKd(0.3).setKs(0.3).setShininess(30).setkT(0.0).setkR(0.0))
+                        .setEmission(new Color(100, 100, 100))
         );
+
+        // Constants
+        double thickEnd = 2.0;     // קוטר הקצה העבה
+        double thinEnd = 0.5;      // קוטר הקצה הדק
+        double length = 15;        // אורך המקל (נשאר כמו במקור)
+        int segments = 16;          // מספר הסגמנטים לעיגול הקצוות
+
+// Colors and materials
+        Color woodColor = new Color(65, 30, 10);  // צבע המקל המקורי
+        Material woodMaterial = new Material().setKd(0.5).setKs(0.5).setShininess(30).setkT(0.0).setkR(0.1);
+// Create the main body of the cue stick
+        for (int i = 0; i < segments; i++) {
+            double angle1 = (i * 2 * Math.PI) / segments;
+            double angle2 = ((i + 1) * 2 * Math.PI) / segments;
+
+            double r1 = thickEnd / 2;
+            double r2 = thinEnd / 2;
+            scene.geometries.add(
+
+            new Polygon(
+                    new Point(0, 10 + (r1 * Math.sin(angle1)), 32.5 + (r1 * Math.cos(angle1))),
+                    new Point(0, 10 + (r1 * Math.sin(angle2)), 32.5 + (r1 * Math.cos(angle2))),
+                    new Point(length, 10 + (r2 * Math.sin(angle2)), 12.5 + (r2 * Math.cos(angle2))),
+                    new Point(length, 10 + (r2 * Math.sin(angle1)), 12.5 + (r2 * Math.cos(angle1)))
+            )
+                    .setEmission(woodColor)
+                    .setMaterial(woodMaterial));
+        }
+
+// Create rounded thick end
+        for (int i = 0; i < segments; i++) {
+            double angle1 = Math.PI + (i * Math.PI) / segments;
+            double angle2 = Math.PI + ((i + 1) * Math.PI) / segments;
+            scene.geometries.add(
+
+            new Polygon(
+                    new Point(0, 10 + (thickEnd/2 * Math.sin(angle1)), 32.5 + (thickEnd/2 * Math.cos(angle1))),
+                    new Point(0, 10 + (thickEnd/2 * Math.sin(angle2)), 32.5 + (thickEnd/2 * Math.cos(angle2))),
+                    new Point(0.5, 10 + (thickEnd/2 * Math.sin(angle2)), 32 + (thickEnd/2 * Math.cos(angle2))),
+                    new Point(0.5, 10 + (thickEnd/2 * Math.sin(angle1)), 32 + (thickEnd/2 * Math.cos(angle1)))
+            )
+                    .setEmission(woodColor)
+                    .setMaterial(woodMaterial));
+        }
+
+// Create rounded thin end
+        for (int i = 0; i < segments; i++) {
+            double angle1 = Math.PI + (i * Math.PI) / segments;
+            double angle2 = Math.PI + ((i + 1) * Math.PI) / segments;
+            scene.geometries.add(
+
+            new Polygon(
+                    new Point(length, 10 + (thinEnd/2 * Math.sin(angle1)), 12.5 + (thinEnd/2 * Math.cos(angle1))),
+                    new Point(length, 10 + (thinEnd/2 * Math.sin(angle2)), 12.5 + (thinEnd/2 * Math.cos(angle2))),
+                    new Point(length - 0.5, 10 + (thinEnd/2 * Math.sin(angle2)), 12.5 + (thinEnd/2 * Math.cos(angle2))),
+                    new Point(length - 0.5, 10 + (thinEnd/2 * Math.sin(angle1)), 12.5 + (thinEnd/2 * Math.cos(angle1)))
+            )
+                    .setEmission(woodColor)
+                    .setMaterial(woodMaterial));
+        }
 
         // make it a BVH
         scene.geometries.makeBVH();
@@ -806,7 +866,7 @@ public class snookerTest {
                 .setBackground(new Color(100, 100, 100));
 
         // Render the scene
-        camera.setImageWriter(new ImageWriter("snookerTest", 1000, 1000))
+        camera.setImageWriter(new ImageWriter("SnookerTest", 1000, 1000))
                 .build()
                 .renderImage()
                 .writeToImage();
