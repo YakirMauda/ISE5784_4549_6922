@@ -9,7 +9,7 @@ import scene.Scene;
 /**
  * Test rendering a basic image
  */
-public class snookerTest {
+public class SnookerTest {
     /**
      * Scene of the tests
      */
@@ -22,10 +22,9 @@ public class snookerTest {
             .setLocation(new Point(200, 200, 100))
             .setDirection(new Point(0, 0, 0), new Vector(-1, -30, 180).normalize())
             .setVpDistance(500)
-            .setVpSize(200, 200)
+            .setVpSize(800, 600)
             .setNumSamples(9)
-            .setMultithreading(3); //
-            //.setDebugPrint(0.1); // progress update intervak in %
+            .setMultithreading(3);
 
     /**
      * Produce a scene with basic 3D model and render it into a png image with a
@@ -34,13 +33,13 @@ public class snookerTest {
     @Test
     public void snookerrrTest() {
 
-        Material material1 = new Material().setKd(0.0).setKs(0.5).setShininess(500).setkT(0.0).setkR(0.0);
+        Material material1 = new Material().setKd(0.0).setKs(0.7).setShininess(500).setkT(0.0).setkR(0.0);
         Color color1 = new Color(0, 0, 0);
 
-        Material material2 = new Material().setKd(0.06895158137194812).setKs(0.5).setShininess(500).setkT(0.0).setkR(0.0);
+        Material material2 = new Material().setKd(0.06895158137194812).setKs(0.7).setShininess(500).setkT(0.0).setkR(0.0);
         Color color2 = new Color(0, 51, 0);
 
-        Material material3 = new Material().setKd(0.033753237687051296).setKs(0.5).setShininess(500).setkT(0.0).setkR(0.0);
+        Material material3 = new Material().setKd(0.033753237687051296).setKs(0.7).setShininess(500).setkT(0.0).setkR(0.0);
         Color color3 = new Color(22, 3, 0);
 
         scene.geometries.add(
@@ -381,120 +380,120 @@ public class snookerTest {
                 new Triangle(
                         new Point(46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(46.501895904541016, 26.328868865966797, 13.805246353149414),
-                        new Point(46.501895904541016, -26.328868865966797, 13.805248260498047)
-                ).setMaterial(material3)
+                        new Point(46.501895904541016, -26.328868865966797, 13.805248260498047))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(42.67719268798828, -30.15357208251953, 13.805248260498047),
-                        new Point(42.67719268798828, -30.15357208251953, 1.3180545010982314e-06)
-                ).setMaterial(material3)
+                        new Point(42.67719268798828, -30.15357208251953, 1.3180545010982314e-06))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(46.501895904541016, 26.328868865966797, 13.805246353149414),
                         new Point(44.0904655456543, -25.33002281188965, 13.805248260498047),
-                        new Point(46.501895904541016, -26.328868865966797, 13.805248260498047)
-                ).setMaterial(material3)
+                        new Point(46.501895904541016, -26.328868865966797, 13.805248260498047))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(46.501895904541016, -26.328868865966797, 13.805248260498047),
                         new Point(41.678348541259766, -27.742141723632812, 13.805248260498047),
-                        new Point(42.67719268798828, -30.15357208251953, 13.805248260498047)
-                ).setMaterial(material3)
+                        new Point(42.67719268798828, -30.15357208251953, 13.805248260498047))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(44.0904655456543, -25.33002281188965, 13.805248260498047),
                         new Point(41.678348541259766, -27.742141723632812, 11.467707633972168),
-                        new Point(41.678348541259766, -27.742141723632812, 13.805248260498047)
-                ).setMaterial(material3)
+                        new Point(41.678348541259766, -27.742141723632812, 13.805248260498047))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(44.0904655456543, 25.33002281188965, 13.805246353149414),
                         new Point(44.0904655456543, -25.33002281188965, 11.467707633972168),
-                        new Point(44.0904655456543, -25.33002281188965, 13.805248260498047)
-                ).setMaterial(material3)
+                        new Point(44.0904655456543, -25.33002281188965, 13.805248260498047))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(41.678348541259766, 27.742141723632812, 13.805246353149414),
                         new Point(44.0904655456543, 25.33002281188965, 11.467705726623535),
-                        new Point(44.0904655456543, 25.33002281188965, 13.805246353149414)
-                ).setMaterial(material3)
+                        new Point(44.0904655456543, 25.33002281188965, 13.805246353149414))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(-41.678348541259766, 27.742141723632812, 13.805246353149414),
                         new Point(41.678348541259766, 27.742141723632812, 11.467705726623535),
-                        new Point(41.678348541259766, 27.742141723632812, 13.805246353149414)
-                ).setMaterial(material3)
+                        new Point(41.678348541259766, 27.742141723632812, 13.805246353149414))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(-42.67719268798828, 30.15357208251953, 13.805246353149414),
                         new Point(41.678348541259766, 27.742141723632812, 13.805246353149414),
-                        new Point(42.67719268798828, 30.15357208251953, 13.805246353149414)
-                ).setMaterial(material3)
+                        new Point(42.67719268798828, 30.15357208251953, 13.805246353149414))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(46.501895904541016, 26.328868865966797, 13.805246353149414),
                         new Point(41.678348541259766, 27.742141723632812, 13.805246353149414),
-                        new Point(44.0904655456543, 25.33002281188965, 13.805246353149414)
-                ).setMaterial(material3)
+                        new Point(44.0904655456543, 25.33002281188965, 13.805246353149414))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(-46.501895904541016, 26.328868865966797, 13.805248260498047),
                         new Point(-41.678348541259766, 27.742141723632812, 13.805246353149414),
-                        new Point(-42.67719268798828, 30.15357208251953, 13.805246353149414)
-                ).setMaterial(material3)
+                        new Point(-42.67719268798828, 30.15357208251953, 13.805246353149414))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(-44.0904655456543, 25.33002281188965, 13.805246353149414),
                         new Point(-41.678348541259766, 27.742141723632812, 11.467705726623535),
-                        new Point(-41.678348541259766, 27.742141723632812, 13.805246353149414)
-                ).setMaterial(material3)
+                        new Point(-41.678348541259766, 27.742141723632812, 13.805246353149414))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(-46.501895904541016, -26.328868865966797, 13.805248260498047),
                         new Point(-44.0904655456543, 25.33002281188965, 13.805246353149414),
-                        new Point(-46.501895904541016, 26.328868865966797, 13.805246353149414)
-                ).setMaterial(material3)
+                        new Point(-46.501895904541016, 26.328868865966797, 13.805246353149414))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(-44.0904655456543, -25.33002281188965, 13.805248260498047),
                         new Point(-44.0904655456543, 25.33002281188965, 11.467705726623535),
-                        new Point(-44.0904655456543, 25.33002281188965, 13.805246353149414)
-                ).setMaterial(material3)
+                        new Point(-44.0904655456543, 25.33002281188965, 13.805246353149414))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(-41.678348541259766, -27.742141723632812, 13.805248260498047),
                         new Point(-44.0904655456543, -25.33002281188965, 11.467707633972168),
-                        new Point(-44.0904655456543, -25.33002281188965, 13.805248260498047)
-                ).setMaterial(material3)
+                        new Point(-44.0904655456543, -25.33002281188965, 13.805248260498047))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(41.678348541259766, -27.742141723632812, 13.805248260498047),
                         new Point(-41.678348541259766, -27.742141723632812, 11.467707633972168),
-                        new Point(-41.678348541259766, -27.742141723632812, 13.805248260498047)
-                ).setMaterial(material3)
+                        new Point(-41.678348541259766, -27.742141723632812, 13.805248260498047))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(
                         new Point(42.67719268798828, -30.15357208251953, 13.805248260498047),
                         new Point(-41.678348541259766, -27.742141723632812, 13.805248260498047),
-                        new Point(-42.67719268798828, -30.15357208251953, 13.805248260498047)
-                ).setMaterial(material3)
+                        new Point(-42.67719268798828, -30.15357208251953, 13.805248260498047))
+                        .setMaterial(material3)
                         .setEmission(color3),
 
                 new Triangle(new Point(-46.501895904541016, -26.328868865966797, 13.805248260498047),
@@ -502,97 +501,116 @@ public class snookerTest {
                         new Point(-44.0904655456543, -25.33002281188965, 13.805248260498047))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(-46.501895904541016, 26.328868865966797, 13.805246353149414),
                         new Point(-46.501895904541016, 26.328868865966797, -1.1508714123920072e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, 26.328868865966797, -1.1508714123920072e-06),
                         new Point(-42.67719268798828, 30.15357208251953, 13.805246353149414),
                         new Point(-42.67719268798828, 30.15357208251953, -1.3180545010982314e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(42.67719268798828, 30.15357208251953, 13.805246353149414),
                         new Point(42.67719268798828, 30.15357208251953, -1.3180545010982314e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(46.501895904541016, 26.328868865966797, 13.805246353149414),
                         new Point(46.501895904541016, 26.328868865966797, -1.1508714123920072e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(40.679500579833984, -25.330713272094727, 1.1072406778112054e-06),
                         new Point(42.67719268798828, -30.15357208251953, 1.3180545010982314e-06),
                         new Point(0.0, -25.330713272094727, 1.1072406778112054e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(42.67719268798828, -30.15357208251953, 1.3180545010982314e-06),
                         new Point(-42.67719268798828, -30.15357208251953, 1.3180545010982314e-06),
                         new Point(0.0, -25.330713272094727, 1.1072406778112054e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(42.67719268798828, -30.15357208251953, 1.3180545010982314e-06),
                         new Point(42.67719268798828, -30.15357208251953, 13.805248260498047),
                         new Point(-42.67719268798828, -30.15357208251953, 13.805248260498047))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, -26.328868865966797, 13.805248260498047),
                         new Point(-46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(-42.67719268798828, -30.15357208251953, 1.3180545010982314e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-40.679500579833984, -25.330713272094727, 1.1072406778112054e-06),
                         new Point(-42.67719268798828, -30.15357208251953, 1.3180545010982314e-06),
                         new Point(-41.17927169799805, -24.830944061279297, 1.0853950698219705e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
 
+
                 new Triangle(new Point(-42.67719268798828, -30.15357208251953, 1.3180545010982314e-06),
                         new Point(-46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(-41.17927169799805, -24.830944061279297, 1.0853950698219705e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-41.679039001464844, -24.331174850463867, 1.0635494618327357e-06),
                         new Point(-46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(-41.679039001464844, 0.0, 0.0))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(-46.501895904541016, 26.328868865966797, -1.1508714123920072e-06),
                         new Point(-41.679039001464844, 0.0, 0.0))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-41.679039001464844, 24.331174850463867, -1.0635494618327357e-06),
                         new Point(-46.501895904541016, 26.328868865966797, -1.1508714123920072e-06),
                         new Point(-41.17927169799805, 24.830944061279297, -1.0853950698219705e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, 26.328868865966797, -1.1508714123920072e-06),
                         new Point(-42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(-41.17927169799805, 24.830944061279297, -1.0853950698219705e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-40.679500579833984, 25.330713272094727, -1.1072406778112054e-06),
                         new Point(-42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(0.0, 25.330713272094727, -1.1072406778112054e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(0.0, 25.330713272094727, -1.1072406778112054e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(40.679500579833984, 25.330713272094727, -1.1072406778112054e-06),
                         new Point(42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(41.17927169799805, 24.830944061279297, -1.0853950698219705e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(46.501895904541016, 26.328868865966797, -1.1508714123920072e-06),
                         new Point(41.17927169799805, 24.830944061279297, -1.0853950698219705e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(41.679039001464844, 24.331174850463867, -1.0635494618327357e-06),
                         new Point(46.501895904541016, 26.328868865966797, -1.1508714123920072e-06),
                         new Point(41.679039001464844, 0.0, 0.0))
@@ -604,98 +622,115 @@ public class snookerTest {
                         new Point(41.679039001464844, 0.0, 0.0))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(41.679039001464844, -24.331174850463867, 1.0635494618327357e-06),
                         new Point(46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(41.17927169799805, -24.830944061279297, 1.0853950698219705e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(42.67719268798828, -30.15357208251953, 1.3180545010982314e-06),
                         new Point(41.17927169799805, -24.830944061279297, 1.0853950698219705e-06))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(46.501895904541016, 26.328868865966797, -1.1508714123920072e-06),
                         new Point(46.501895904541016, 26.328868865966797, 13.805246353149414))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(46.501895904541016, -26.328868865966797, 13.805248260498047),
                         new Point(42.67719268798828, -30.15357208251953, 13.805248260498047))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(46.501895904541016, 26.328868865966797, 13.805246353149414),
                         new Point(44.0904655456543, 25.33002281188965, 13.805246353149414),
                         new Point(44.0904655456543, -25.33002281188965, 13.805248260498047))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(46.501895904541016, -26.328868865966797, 13.805248260498047),
                         new Point(44.0904655456543, -25.33002281188965, 13.805248260498047),
                         new Point(41.678348541259766, -27.742141723632812, 13.805248260498047))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(44.0904655456543, -25.33002281188965, 13.805248260498047),
                         new Point(44.0904655456543, -25.33002281188965, 11.467707633972168),
                         new Point(41.678348541259766, -27.742141723632812, 11.467707633972168))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(44.0904655456543, 25.33002281188965, 13.805246353149414),
                         new Point(44.0904655456543, 25.33002281188965, 11.467705726623535),
                         new Point(44.0904655456543, -25.33002281188965, 11.467707633972168))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(41.678348541259766, 27.742141723632812, 13.805246353149414),
                         new Point(41.678348541259766, 27.742141723632812, 11.467705726623535),
                         new Point(44.0904655456543, 25.33002281188965, 11.467705726623535))
                         .setMaterial(material3)
                         .setEmission(color3),
 
-
                 new Triangle(new Point(-41.678348541259766, 27.742141723632812, 13.805246353149414),
                         new Point(-41.678348541259766, 27.742141723632812, 11.467705726623535),
                         new Point(41.678348541259766, 27.742141723632812, 11.467705726623535))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-42.67719268798828, 30.15357208251953, 13.805246353149414),
                         new Point(-41.678348541259766, 27.742141723632812, 13.805246353149414),
                         new Point(41.678348541259766, 27.742141723632812, 13.805246353149414))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(46.501895904541016, 26.328868865966797, 13.805246353149414),
                         new Point(42.67719268798828, 30.15357208251953, 13.805246353149414),
                         new Point(41.678348541259766, 27.742141723632812, 13.805246353149414))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, 26.328868865966797, 13.805246353149414),
                         new Point(-44.0904655456543, 25.33002281188965, 13.805246353149414),
                         new Point(-41.678348541259766, 27.742141723632812, 13.805246353149414))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-44.0904655456543, 25.33002281188965, 13.805246353149414),
                         new Point(-44.0904655456543, 25.33002281188965, 11.467705726623535),
                         new Point(-41.678348541259766, 27.742141723632812, 11.467705726623535))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, -26.328868865966797, 13.805248260498047),
                         new Point(-44.0904655456543, -25.33002281188965, 13.805248260498047),
                         new Point(-44.0904655456543, 25.33002281188965, 13.805246353149414))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-44.0904655456543, -25.33002281188965, 13.805248260498047),
                         new Point(-44.0904655456543, -25.33002281188965, 11.467707633972168),
                         new Point(-44.0904655456543, 25.33002281188965, 11.467705726623535))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-41.678348541259766, -27.742141723632812, 13.805248260498047),
                         new Point(-41.678348541259766, -27.742141723632812, 11.467707633972168),
                         new Point(-44.0904655456543, -25.33002281188965, 11.467707633972168))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(41.678348541259766, -27.742141723632812, 13.805248260498047),
                         new Point(41.678348541259766, -27.742141723632812, 11.467707633972168),
                         new Point(-41.678348541259766, -27.742141723632812, 11.467707633972168))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(42.67719268798828, -30.15357208251953, 13.805248260498047),
                         new Point(41.678348541259766, -27.742141723632812, 13.805248260498047),
                         new Point(-41.678348541259766, -27.742141723632812, 13.805248260498047))
@@ -707,21 +742,25 @@ public class snookerTest {
                         new Point(-41.678348541259766, -27.742141723632812, 13.805248260498047))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, -26.328868865966797, 1.1508714123920072e-06),
                         new Point(-46.501895904541016, -26.328868865966797, 13.805248260498047),
                         new Point(-46.501895904541016, 26.328868865966797, 13.805246353149414))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-46.501895904541016, 26.328868865966797, -1.1508714123920072e-06),
                         new Point(-46.501895904541016, 26.328868865966797, 13.805246353149414),
                         new Point(-42.67719268798828, 30.15357208251953, 13.805246353149414))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(-42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(-42.67719268798828, 30.15357208251953, 13.805246353149414),
                         new Point(42.67719268798828, 30.15357208251953, 13.805246353149414))
                         .setMaterial(material3)
                         .setEmission(color3),
+
                 new Triangle(new Point(42.67719268798828, 30.15357208251953, -1.3180545010982314e-06),
                         new Point(42.67719268798828, 30.15357208251953, 13.805246353149414),
                         new Point(46.501895904541016, 26.328868865966797, 13.805246353149414))
@@ -786,8 +825,26 @@ public class snookerTest {
                         new Point(-100,100,-15.100517272949219),
                         new Point(-100,-100,-15.100517272949219))
                         .setMaterial(new Material().setKd(0.3).setKs(0.3).setShininess(30).setkT(0.0).setkR(0.0))
-                        .setEmission(new Color(100, 100, 100))
+                        .setEmission(new Color(100, 100, 100)),
+
+                // wall behind
+                new Polygon(new Point(100,-100,-15.100517272949219),
+                            new Point(-100,-100,-15.100517272949219),
+                            new Point(-100,-100,100),
+                            new Point(100,-100,100))
+                            .setMaterial(new Material().setKd(0.3).setKs(0.3).setShininess(30).setkT(0.0).setkR(0.0))
+                            .setEmission(new Color(100, 100, 100)),
+
+                //
+                new Polygon(new Point(-100,-100,-15.100517272949219),
+                            new Point(-100,100,-15.100517272949219),
+                            new Point(-100,100,100),
+                            new Point(-100,-100,100))
+                            .setMaterial(new Material().setKd(0.3).setKs(0.3).setShininess(30).setkT(0.0).setkR(0.0))
+                            .setEmission(new Color(100, 100, 100))
         );
+
+        // The Stick
 
         // Constants
         double thickEnd = 2.0;     // קוטר הקצה העבה
@@ -795,10 +852,12 @@ public class snookerTest {
         double length = 15;        // אורך המקל (נשאר כמו במקור)
         int segments = 16;          // מספר הסגמנטים לעיגול הקצוות
 
-// Colors and materials
+        // Colors and materials
         Color woodColor = new Color(65, 30, 10);  // צבע המקל המקורי
         Material woodMaterial = new Material().setKd(0.5).setKs(0.5).setShininess(30).setkT(0.0).setkR(0.1);
-// Create the main body of the cue stick
+
+        // Create the main body of the cue stick
+
         for (int i = 0; i < segments; i++) {
             double angle1 = (i * 2 * Math.PI) / segments;
             double angle2 = ((i + 1) * 2 * Math.PI) / segments;
@@ -817,34 +876,32 @@ public class snookerTest {
                     .setMaterial(woodMaterial));
         }
 
-// Create rounded thick end
+        // Create rounded thick end
         for (int i = 0; i < segments; i++) {
             double angle1 = Math.PI + (i * Math.PI) / segments;
             double angle2 = Math.PI + ((i + 1) * Math.PI) / segments;
-            scene.geometries.add(
 
+            scene.geometries.add(
             new Polygon(
                     new Point(0, 10 + (thickEnd/2 * Math.sin(angle1)), 32.5 + (thickEnd/2 * Math.cos(angle1))),
                     new Point(0, 10 + (thickEnd/2 * Math.sin(angle2)), 32.5 + (thickEnd/2 * Math.cos(angle2))),
                     new Point(0.5, 10 + (thickEnd/2 * Math.sin(angle2)), 32 + (thickEnd/2 * Math.cos(angle2))),
-                    new Point(0.5, 10 + (thickEnd/2 * Math.sin(angle1)), 32 + (thickEnd/2 * Math.cos(angle1)))
-            )
+                    new Point(0.5, 10 + (thickEnd/2 * Math.sin(angle1)), 32 + (thickEnd/2 * Math.cos(angle1))))
                     .setEmission(woodColor)
                     .setMaterial(woodMaterial));
         }
 
-// Create rounded thin end
+        // Create rounded thin end
         for (int i = 0; i < segments; i++) {
             double angle1 = Math.PI + (i * Math.PI) / segments;
             double angle2 = Math.PI + ((i + 1) * Math.PI) / segments;
-            scene.geometries.add(
 
+            scene.geometries.add(
             new Polygon(
                     new Point(length, 10 + (thinEnd/2 * Math.sin(angle1)), 12.5 + (thinEnd/2 * Math.cos(angle1))),
                     new Point(length, 10 + (thinEnd/2 * Math.sin(angle2)), 12.5 + (thinEnd/2 * Math.cos(angle2))),
                     new Point(length - 0.5, 10 + (thinEnd/2 * Math.sin(angle2)), 12.5 + (thinEnd/2 * Math.cos(angle2))),
-                    new Point(length - 0.5, 10 + (thinEnd/2 * Math.sin(angle1)), 12.5 + (thinEnd/2 * Math.cos(angle1)))
-            )
+                    new Point(length - 0.5, 10 + (thinEnd/2 * Math.sin(angle1)), 12.5 + (thinEnd/2 * Math.cos(angle1))))
                     .setEmission(woodColor)
                     .setMaterial(woodMaterial));
         }
@@ -865,8 +922,16 @@ public class snookerTest {
         scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), 0.1))
                 .setBackground(new Color(100, 100, 100));
 
+//        scene.lights.add(new DirectionalLight(new Color(100, 100, 100), new Vector(0, 0, -1)));
+
+//        scene.lights.add(new SpotLight(new Color(100, 100, 100), new Point(0,50,50), new Vector(0,-1,-1).normalize())
+//                .setKl(0.00001).setKq(0.000001));
+
+        scene.lights.add(new SpotLight(new Color(0,255,255), new Point(70,70,-15.100517272949219 + 1),new Vector(-70,-70,15.100517272949219 - 1).normalize())
+                .setKl(0.00001).setKq(0.0001));
+
         // Render the scene
-        camera.setImageWriter(new ImageWriter("SnookerTest", 1000, 1000))
+        camera.setImageWriter(new ImageWriter("SnookerTestYellow", 2480, 1260))
                 .build()
                 .renderImage()
                 .writeToImage();

@@ -38,6 +38,7 @@ public class BoundingBox {
      * @return true if the ray intersects the bounding box, false otherwise
      */
     public boolean hasIntersection(Ray ray) {
+        // Extract the coordinates of the bounding box's minimum and maximum points
         double minX = min.getX();
         double minY = min.getY();
         double minZ = min.getZ();
@@ -45,6 +46,7 @@ public class BoundingBox {
         double maxY = max.getY();
         double maxZ = max.getZ();
 
+        // Extract the ray's origin (head) coordinates and direction vector components
         Point head = ray.getHead();
         double headX = head.getX();
         double headY = head.getY();
@@ -54,6 +56,7 @@ public class BoundingBox {
         double dirY = dir.getY();
         double dirZ = dir.getZ();
 
+        // Initialize the intersection parameters for each axis
         double tMinX = Double.NEGATIVE_INFINITY;
         double tMaxX = Double.POSITIVE_INFINITY;
         double tMinY = Double.NEGATIVE_INFINITY;
@@ -65,6 +68,7 @@ public class BoundingBox {
         if (dirX != 0) {
             tMinX = (minX - headX) / dirX;
             tMaxX = (maxX - headX) / dirX;
+            // Swap if direction is negative
             if (dirX < 0) {
                 double temp = tMinX;
                 tMinX = tMaxX;
@@ -76,6 +80,7 @@ public class BoundingBox {
         if (dirY != 0) {
             tMinY = (minY - headY) / dirY;
             tMaxY = (maxY - headY) / dirY;
+            // Swap if direction is negative
             if (dirY < 0) {
                 double temp = tMinY;
                 tMinY = tMaxY;
@@ -86,6 +91,7 @@ public class BoundingBox {
         // Check for overlap in the XY slab
         if (tMinX > tMaxY || tMinY > tMaxX) return false;
 
+        // Update the X intersection parameters based on Y intersection
         if (tMinY > tMinX) tMinX = tMinY;
         if (tMaxY < tMaxX) tMaxX = tMaxY;
 
@@ -93,6 +99,7 @@ public class BoundingBox {
         if (dirZ != 0) {
             tMinZ = (minZ - headZ) / dirZ;
             tMaxZ = (maxZ - headZ) / dirZ;
+            // Swap if direction is negative
             if (dirZ < 0) {
                 double temp = tMinZ;
                 tMinZ = tMaxZ;

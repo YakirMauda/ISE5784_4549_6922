@@ -309,36 +309,52 @@ public class Camera implements Cloneable {
     }
 
     /**
-     * Render the image
+     * Render the image using either single-threaded or multithreaded approach.
+     * @return The Camera object, allowing for method chaining
      */
     public Camera renderImage() {
+        // Get the dimensions of the image
         int ny = imageWriter.getNy();
         int nx = imageWriter.getNx();
+
+        // Initialize the Pixel class with image dimensions and print interval
         Pixel.initialize(ny, nx, printInterval);
 
+        // Single-threaded rendering
         if (threadsCount == 0) {
             for (int i = 0; i < ny; ++i)
                 for (int j = 0; j < nx; ++j)
                     castRays(nx, ny, j, i);
             return this;
         }
+
+        // Multithreaded rendering
         List<Thread> threads = new LinkedList<>();
+
+        // Determine the number of threads to use
         int availableProcessors = threadsCount == -1 ? Runtime.getRuntime().availableProcessors()
                 : threadsCount;
 
+        // Create and initialize threads
         for (int t = 0; t < availableProcessors; t++) {
             threads.add(new Thread(() -> {
                 Pixel pixel;
+                // Each thread processes pixels until there are no more left
                 while ((pixel = Pixel.nextPixel()) != null)
                     castRays(nx, ny, pixel.col(), pixel.row());
             }));
         }
+
+        // Start all threads
         for (var thread : threads)
             thread.start();
+
+        // Wait for all threads to complete
         try {
             for (var thread : threads)
                 thread.join();
         } catch (InterruptedException ignore) {
+            // Interruption is ignored in this implementation
         }
 
         return this;

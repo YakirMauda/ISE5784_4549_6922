@@ -70,7 +70,7 @@ public abstract class Intersectable {
      */
     public final List<GeoPoint> findGeoIntersections(Ray ray) {
         // Calls the helper method with an infinite maximum distance to find all intersections
-        return findGeoIntersectionsHelper(ray, Double.POSITIVE_INFINITY);
+        return findGeoIntersections(ray, Double.POSITIVE_INFINITY);
     }
 
     /**
