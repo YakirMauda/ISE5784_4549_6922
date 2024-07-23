@@ -835,7 +835,7 @@ public class SnookerTest {
                             .setMaterial(new Material().setKd(0.3).setKs(0.3).setShininess(30).setkT(0.0).setkR(0.0))
                             .setEmission(new Color(100, 100, 100)),
 
-                //
+                // wall left
                 new Polygon(new Point(-100,-100,-15.100517272949219),
                             new Point(-100,100,-15.100517272949219),
                             new Point(-100,100,100),
@@ -847,13 +847,13 @@ public class SnookerTest {
         // The Stick
 
         // Constants
-        double thickEnd = 2.0;     // קוטר הקצה העבה
-        double thinEnd = 0.5;      // קוטר הקצה הדק
-        double length = 15;        // אורך המקל (נשאר כמו במקור)
-        int segments = 16;          // מספר הסגמנטים לעיגול הקצוות
+        double thickEnd = 2.0;     // The diameter of the thick end
+        double thinEnd = 0.5;      // diameter of the thin end
+        double length = 15;        // the length of the stick
+        int segments = 16;          // The number of segments to round the edges
 
         // Colors and materials
-        Color woodColor = new Color(65, 30, 10);  // צבע המקל המקורי
+        Color woodColor = new Color(65, 30, 10);
         Material woodMaterial = new Material().setKd(0.5).setKs(0.5).setShininess(30).setkT(0.0).setkR(0.1);
 
         // Create the main body of the cue stick
@@ -922,16 +922,12 @@ public class SnookerTest {
         scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), 0.1))
                 .setBackground(new Color(100, 100, 100));
 
-//        scene.lights.add(new DirectionalLight(new Color(100, 100, 100), new Vector(0, 0, -1)));
-
-//        scene.lights.add(new SpotLight(new Color(100, 100, 100), new Point(0,50,50), new Vector(0,-1,-1).normalize())
-//                .setKl(0.00001).setKq(0.000001));
 
         scene.lights.add(new SpotLight(new Color(0,255,255), new Point(70,70,-15.100517272949219 + 1),new Vector(-70,-70,15.100517272949219 - 1).normalize())
                 .setKl(0.00001).setKq(0.0001));
 
         // Render the scene
-        camera.setImageWriter(new ImageWriter("SnookerTestYellow", 2480, 1260))
+        camera.setImageWriter(new ImageWriter("SnookerTest", 1280, 1000))
                 .build()
                 .renderImage()
                 .writeToImage();
